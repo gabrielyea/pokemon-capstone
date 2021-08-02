@@ -1,8 +1,4 @@
-@use './base/' as *;
-@use './layout/' as *;
-
-$red: red;
-
-body {
-  color: $red;
-}
+@use 'base' as *;
+@use 'layout' as *;
+@use 'components' as *;
+@use 'pages' as *;
