@@ -1,2 +1,8 @@
 @use './base/' as *;
 @use './layout/' as *;
+
+$red: red;
+
+body {
+  color: $red;
+}
