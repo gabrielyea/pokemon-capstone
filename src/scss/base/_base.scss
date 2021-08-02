@@ -8,6 +8,8 @@ html {
 }
 
 body {
+  @include flexCenter;
+
   font-size: 1.6rem;
 }
 
