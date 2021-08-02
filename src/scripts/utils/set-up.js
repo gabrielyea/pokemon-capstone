@@ -6,32 +6,33 @@ export default class SetUp {
 
   pokemonContainer = document.querySelector('.pokemons-section');
 
-  pokemonList = [];
-
-  getPokemons = async (i) => {
-    console.log(i)
-    const response = await access.requestApi(routes.POKEMON, i);
-    const { id, name, sprites } = response;
-    this.pokemonList = this.pokemonList.concat(i);
-    console.log(this.pokemonList);
+  init = async () => {
+    const list = await this.getPokemons();
+    this.appendPokemons(list, this.pokemonContainer);
   }
 
-  createPokemons = (list, target) => {
-    Object.entries(list).forEach((pokemon) => {
-      target.appendChild(this.createDomElement(pokemon));
+  getPokemons = async () => {
+    const response = await access.requestApi(routes.STARTPOKEMON);
+    const pokemonList = response.results;
+    return pokemonList;
+  }
+
+  appendPokemons = async (list, target) => {
+    list.forEach((pokemon) => {
+      this.createDomElement(pokemon, target);
     });
   }
 
-  createDomElement = (element) => {
+  createDomElement = async (element, target) => {
     const pokemon = this.template.content.firstElementChild.cloneNode(true);
     pokemon.querySelector('.pokemon-name').innerText = element.name;
+    pokemon.querySelector('img').src = await this.getImage(element.name);
+    target.appendChild(pokemon);
     return pokemon;
   }
 
-  fillArray = () => {
-    for (let i = 1; i < 7; i += 1) {
-      this.getPokemons(i);
-    }
-    this.createPokemons(this.pokemonList, this.pokemonContainer);
+  getImage = async (name) => {
+    const response = await access.requestApi(routes.POKEMON, name);
+    return response.sprites.front_default;
   }
 }

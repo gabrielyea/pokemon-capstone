@@ -1,5 +1,6 @@
 class ApiRoutes {
-  // POKEMON ='https://pokeapi.co/api/v2/pokemon/?limit=6&offset=0';
+  STARTPOKEMON ='https://pokeapi.co/api/v2/pokemon/?limit=6&offset=0';
+
   POKEMON ='https://pokeapi.co/api/v2/pokemon';
 }
 
