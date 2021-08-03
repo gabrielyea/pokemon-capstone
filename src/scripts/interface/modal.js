@@ -8,6 +8,8 @@ class Modal {
 
   img = document.querySelector('.modal__img');
 
+  commentsCounter = document.querySelector('.modal__comments-counter');
+
   commentsContainer = document.querySelector('.modal__comments-container');
 
   form = document.querySelector('.modal__form');
@@ -43,8 +45,10 @@ class Modal {
 
   displayComments = async () => {
     this.commentsContainer.innerHTML = '';
+    this.commentsCounter.textContent = '(0)';
     const comments = await access.getApi(routes.COMMENTS, { item_id: this.pokemon.name });
     if (comments.length !== undefined) {
+      this.commentsCounter.textContent = `(${comments.length})`;
       comments.forEach((comment) => {
         const li = document.createElement('li');
         li.innerHTML = `<span class="comments__name">${comment.username}:</span>
