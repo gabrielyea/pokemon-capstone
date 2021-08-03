@@ -5,5 +5,4 @@ const setUp = new SetUp();
 
 window.addEventListener('load', () => {
   setUp.init();
-  setUp.likeTest();
 });

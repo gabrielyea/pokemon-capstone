@@ -1,6 +1,7 @@
 import routes from '../api/api-routes.js';
 import access from '../api/api-access.js';
 import pokemonList from '../pokemons/pokemon-list.js';
+import decorator from './decorator.js';
 
 export default class SetUp {
   template = document.querySelector('template');
@@ -13,7 +14,8 @@ export default class SetUp {
 
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
     pokemonList.fill(domList);
-    this.loadImages(domList);
+    decorator.makeLike(pokemonList.pokemons);
+    // this.loadImages(domList);
   }
 
   getPokemons = async () => {
@@ -34,22 +36,18 @@ export default class SetUp {
     return pokemon;
   }
 
-  getImage = async (name) => {
-    const response = await access.getApi(`${routes.POKEMON}${name}`, {});
-    return response.sprites.front_default;
-  }
+  // getImage = async (name) => {
+  //   const response = await access.getApi(`${routes.POKEMON}${name}`, {});
+  //   return response.sprites.front_default;
+  // }
 
-  setImage = async (element) => {
-    element.querySelector('img').src = await this.getImage(element.querySelector('.pokemon-name').innerText);
-  }
+  // setImage = async (element) => {
+  //   element.querySelector('img').src = await this.getImage(element.querySelector('.pokemon-name').innerText);
+  // }
 
-  loadImages = async (list) => {
-    list.forEach((pokemon) => {
-      this.setImage(pokemon);
-    });
-  }
-
-  likeTest = () => {
-    access.postApi(routes.LIKES, { item_id: 'pikachu' });
-  }
+  // loadImages = (list) => {
+  //   list.forEach((pokemon) => {
+  //     this.setImage(pokemon);
+  //   });
+  // }
 }
