@@ -15,7 +15,6 @@ export default class SetUp {
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
     pokemonList.fill(domList);
     decorator.makeLike(pokemonList.pokemons);
-    // this.loadImages(domList);
   }
 
   getPokemons = async () => {
@@ -35,19 +34,4 @@ export default class SetUp {
     target.appendChild(pokemon);
     return pokemon;
   }
-
-  // getImage = async (name) => {
-  //   const response = await access.getApi(`${routes.POKEMON}${name}`, {});
-  //   return response.sprites.front_default;
-  // }
-
-  // setImage = async (element) => {
-  //   element.querySelector('img').src = await this.getImage(element.querySelector('.pokemon-name').innerText);
-  // }
-
-  // loadImages = (list) => {
-  //   list.forEach((pokemon) => {
-  //     this.setImage(pokemon);
-  //   });
-  // }
 }
