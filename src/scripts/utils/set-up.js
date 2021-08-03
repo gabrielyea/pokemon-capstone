@@ -34,4 +34,8 @@ export default class SetUp {
     target.appendChild(pokemon);
     return pokemon;
   }
+
+  test = () => 0;
+
+  test2 = () => 0;
 }
