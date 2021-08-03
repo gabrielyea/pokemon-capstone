@@ -8,6 +8,8 @@ class ApiRoutes {
   MAINAPP = `${this.MAIN}apps/azUYOrcqyZjOBqrEjCpk/`;
 
   LIKES = `${this.MAINAPP}likes/`;
+
+  COMMENTS = `${this.MAINAPP}comments/`
 }
 
 const routes = new ApiRoutes();
