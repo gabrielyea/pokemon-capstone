@@ -12,7 +12,7 @@ export default class SetUp {
   }
 
   getPokemons = async () => {
-    const response = await access.requestApi(routes.STARTPOKEMON);
+    const response = await access.get(routes.POKEMON, { limit: 6, offest: 0 });
     const pokemonList = response.results;
     return pokemonList;
   }
@@ -32,7 +32,7 @@ export default class SetUp {
   }
 
   getImage = async (name) => {
-    const response = await access.requestApi(routes.POKEMON, name);
+    const response = await access.get(`${routes.POKEMON}${name}`, {});
     return response.sprites.front_default;
   }
 }

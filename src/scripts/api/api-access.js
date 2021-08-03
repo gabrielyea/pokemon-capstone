@@ -1,10 +1,13 @@
 class ApiAccess {
-  request = (url, params = {}, method = 'GET') => {
-    let options = {
+  requestApi = (url, params = {}, method = 'GET') => {
+    const options = {
       method,
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     };
-    if ('GET' === method) {
-      url += '?' + (new URLSearchParams(params)).toString();
+    if (method === 'GET') {
+      url += `?${(new URLSearchParams(params)).toString()}`;
     } else {
       options.body = JSON.stringify(params);
     }
@@ -12,20 +15,20 @@ class ApiAccess {
     return fetch(url, options);
   };
 
-  get = async (url, params) => {
-    const response = await this.request(url, params, 'GET');
+  getApi = async (url, params) => {
+    const response = await this.requestApi(url, params, 'GET');
     return response.json();
   };
 
-  post = async (url, params) => {
-    const response = await this.request(url, params, 'POST');
+  postApi = async (url, params) => {
+    const response = await this.requestApi(url, params, 'POST');
     return response.json();
   };
 
-  requestApi = async (url, id) => {
-    const response = await fetch(`${url}/${id}`);
-    return response.json();
-  }
+  // requestApi = async (url, id) => {
+  //   const response = await fetch(`${url}${id}`);
+  //   return response.json();
+  // }
 }
 
 const access = new ApiAccess();
