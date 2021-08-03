@@ -27,12 +27,10 @@ class PokemonList {
     poke.setLike(extLikes);
   }
 
-
   getData = async (name) => {
     const response = await access.getApi(`${routes.POKEMON}${name}`, {});
     return response;
   }
-
 
   setData = async (pokemon) => {
     const data = await this.getData(pokemon.name);
