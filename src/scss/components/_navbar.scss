@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 94rem;
+  margin: 0 auto;
+  padding: 1rem 0;
+  border: 1px black solid;
+
+  ul {
+    display: flex;
+    gap: 2rem;
+  }
+}
