@@ -22,7 +22,7 @@ class ApiAccess {
 
   postApi = async (url, params) => {
     const response = await this.requestApi(url, params, 'POST');
-    return response.json();
+    return response;
   };
 
   // requestApi = async (url, id) => {

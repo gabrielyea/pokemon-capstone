@@ -12,7 +12,7 @@ export default class SetUp {
   }
 
   getPokemons = async () => {
-    const response = await access.get(routes.POKEMON, { limit: 6, offest: 0 });
+    const response = await access.getApi(routes.POKEMON, { limit: 9, offest: 0 });
     const pokemonList = response.results;
     return pokemonList;
   }
@@ -32,7 +32,11 @@ export default class SetUp {
   }
 
   getImage = async (name) => {
-    const response = await access.get(`${routes.POKEMON}${name}`, {});
+    const response = await access.getApi(`${routes.POKEMON}${name}`, {});
     return response.sprites.front_default;
+  }
+
+  likeTest = () => {
+    access.postApi(routes.LIKES, { item_id: 'pikachu' });
   }
 }
