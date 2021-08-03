@@ -13,20 +13,13 @@ class PokemonList {
       const newPoke = new Pokemon(name, 0, reference);
       this.add(newPoke);
       newPoke.onLike.addActions(() => apiMicroverse.setLike(name));
-      newPoke.onOpenComments.addActions(() => modal.openComments(name));
+      newPoke.onOpenComments.addActions(() => modal.openComments(newPoke));
     });
-    this.loadLikes();
-    this.loadImages();
+    this.loadData();
   }
 
   add = (pokemon) => {
     this.pokemons.push(pokemon);
-  }
-
-  loadLikes = () => {
-    this.pokemons.forEach((poke) => {
-      this.setLike(poke);
-    });
   }
 
   setLike = async (poke) => {
@@ -34,19 +27,25 @@ class PokemonList {
     poke.setLike(extLikes);
   }
 
-  getImage = async (name) => {
+  // Request a pokeApi
+
+  getData = async (name) => {
     const response = await access.getApi(`${routes.POKEMON}${name}`, {});
-    return response.sprites.front_default;
+    return response;
   }
 
-  setImage = async (element) => {
-    const img = await this.getImage(element.reference.querySelector('.pokemon-name').innerText);
-    element.setImage(img);
+  // method to get data from the pokeApi, update as needed. (YAGNI)
+
+  setData = async (pokemon) => {
+    const data = await this.getData(pokemon.name);
+    pokemon.setImage(data.sprites.front_default);
+    pokemon.types = data.types;
   }
 
-  loadImages = () => {
+  loadData = () => {
     this.pokemons.forEach((pokemon) => {
-      this.setImage(pokemon);
+      this.setData(pokemon);
+      this.setLike(pokemon);
     });
   }
 }
