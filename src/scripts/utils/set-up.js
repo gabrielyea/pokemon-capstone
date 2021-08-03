@@ -15,6 +15,7 @@ export default class SetUp {
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
     pokemonList.fill(domList);
     decorator.makeLike(pokemonList.pokemons);
+    decorator.makeOpenComments(pokemonList.pokemons);
   }
 
   getPokemons = async () => {

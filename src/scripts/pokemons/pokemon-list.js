@@ -2,6 +2,7 @@ import Pokemon from './pokemon-class.js';
 import apiMicroverse from '../api/api-microverse.js';
 import access from '../api/api-access.js';
 import routes from '../api/api-routes.js';
+import modal from '../interface/modal.js';
 
 class PokemonList {
   pokemons = [];
@@ -12,6 +13,7 @@ class PokemonList {
       const newPoke = new Pokemon(name, 0, reference);
       this.add(newPoke);
       newPoke.onLike.addActions(() => apiMicroverse.setLike(name));
+      newPoke.onOpenComments.addActions(() => modal.openComments(name));
     });
     this.loadLikes();
     this.loadImages();

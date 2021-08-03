@@ -9,6 +9,8 @@ export default class Pokemon {
 
   onLike = new Actions();
 
+  onOpenComments = new Actions();
+
   setLike = (num) => {
     this.reference.querySelector('.like-text').innerText = num;
   }
