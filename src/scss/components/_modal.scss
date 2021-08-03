@@ -1,4 +1,4 @@
-@use '../utils/' as *;
+@use '../utils/'as *;
 
 .modal {
   position: absolute;
@@ -9,10 +9,17 @@
   background: rgba($color: #000000, $alpha: 0.5);
   padding: 7rem 2rem;
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+
+  &--active {
+    visibility: visible;
+    opacity: 1;
+  }
 
   &__card {
     background: white;
-    padding: 2rem;
+    padding: 5rem 2rem;
     border-radius: 0.5rem;
 
     @include flexCenter;
