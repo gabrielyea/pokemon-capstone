@@ -33,7 +33,6 @@ class PokemonList {
     return response;
   }
 
-  // method to get data from the pokeApi, update as needed. (YAGNI)
 
   setData = async (pokemon) => {
     const data = await this.getData(pokemon.name);
