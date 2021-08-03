@@ -9,7 +9,6 @@ class PokemonList {
       const newPoke = new Pokemon(name, reference);
       this.add(newPoke);
     });
-    console.log(this.pokemons);
   }
 
   add = (pokemon) => {
