@@ -7,6 +7,15 @@ class Decorator {
       });
     });
   }
+
+  makeOpenComments = (elementList) => {
+    elementList.forEach((element) => {
+      const commentsButton = element.reference.querySelector('.comments-button');
+      commentsButton.addEventListener('click', () => {
+        element.onOpenComments.doActions({});
+      });
+    });
+  }
 }
 
 const decorator = new Decorator();

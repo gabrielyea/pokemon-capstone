@@ -21,24 +21,67 @@
     <section class="home">
     </section>
     <section class="pokemons-section">
-     <template>
-       <div class="pokemon-card">
-         <img alt="pokemon photo">
-         <div class="likes-container">
-           <h2 class="pokemon-name">blbla</h2>
-           <span class="like">heart icon</span>
-           <p class="like-text"></p>
-         </div>
-         <button type="button">Comments</button>
-         <button type="button">Reservations</button>
-       </div>
-     </template>
+      <template>
+        <div class="pokemon-card">
+          <img alt="pokemon photo">
+          <div class="likes-container">
+            <h2 class="pokemon-name">blbla</h2>
+            <span class="like">heart icon</span>
+            <p class="like-text"></p>
+          </div>
+          <button class="comments-button" type="button">Comments</button>
+          <button class="reservations-button" type="button">Reservations</button>
+        </div>
+      </template>
     </section>
+
+    <section class="modals">
+      <div class="modal">
+        <div class="modal__card">
+          <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon Picture">
+          <h2 class="modal__title">Pokemon Name</h2>
+          <div class="modal__info">
+            <p>Information about the pokemon, like:</p>
+            <ul>
+              <li>Type Moves</li>
+              <li>Abilities Etc.</li>
+              <li>Etc.</li>
+            </ul>
+          </div>
+          <h3>Comments <span class="modal__comments-counter">(0)</span></h3>
+          <ul class="modal__comments-container">
+            <li>
+              <span class="comments__name">Alex:</span>
+              <span class="comments__comment">I'd love to pet it.</span>
+              <span class="comment__date">11th March</span>
+            </li>
+          </ul>
+          <form class="modal__form" action="#" method="post">
+            <h3>Add a comment</h3>
+            <ul>
+              <li>
+                <label class="d-none" for="user_name">Write your name here:</label>
+                <input name="user_name" id="user_name" type="text" placeholder="Write your name here:" required>
+              </li>
+              <li>
+                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30" rows="10" maxlength="500" required></textarea>
+              </li>
+              <li>
+                <button type="submit">Comment</button>
+              </li>
+            </ul>
+          </form>
+          <button type="button" class="modal__close">X</button>
+        </div>
+      </div>
+    </section>
+
     <section class="about"></section>
-     
+
   </main>
   <footer>
     <p>Created by <a href="http://" target="_blank" rel="noopener noreferrer">Gabrielyea</a> and <a href="http://" target="_blank" rel="noopener noreferrer">D4nielJ</a></p>
   </footer>
 </body>
+
 </html>
