@@ -4,15 +4,16 @@ class PokemonList {
   pokemons = [];
 
   fill = (referenceList) => {
-    referenceList.forEach((pokemon) => {
-      const name = pokemon.querySelector('.pokemon-name').innerText;
-      const newPoke = new Pokemon(name, pokemon);
-      this.pokemons.push(newPoke);
+    referenceList.forEach((reference) => {
+      const name = reference.querySelector('.pokemon-name').innerText;
+      const newPoke = new Pokemon(name, reference);
+      this.add(newPoke);
     });
+    console.log(this.pokemons);
   }
 
-  add = ({ pokmeon }) => {
-    this.pokemons.push(pokmeon);
+  add = (pokemon) => {
+    this.pokemons.push(pokemon);
   }
 }
 

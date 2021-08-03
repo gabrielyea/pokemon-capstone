@@ -17,9 +17,8 @@ export default class SetUp {
   }
 
   getPokemons = async () => {
-    const response = await access.getApi(routes.POKEMON, { limit: 9, offest: 0 });
-    const pokemonList = response.results;
-    return pokemonList;
+    const response = await access.getApi(routes.POKEMON, { limit: 6, offset: 0 });
+    return response.results;
   }
 
   appendPokemons = (list, target) => {
