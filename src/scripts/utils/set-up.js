@@ -11,20 +11,10 @@ export default class SetUp {
   init = async () => {
     const list = await this.getPokemons();
     this.appendPokemons(list, this.pokemonContainer);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of a742699 (Revert "Get and set likes from api")
 
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
     pokemonList.fill(domList);
     decorator.makeLike(pokemonList.pokemons);
-<<<<<<< HEAD
-=======
->>>>>>> dev
-=======
-    // this.loadImages(domList);
->>>>>>> parent of a742699 (Revert "Get and set likes from api")
   }
 
   getPokemons = async () => {
@@ -44,29 +34,4 @@ export default class SetUp {
     target.appendChild(pokemon);
     return pokemon;
   }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-  getImage = async (name) => {
-    const response = await access.requestApi(routes.POKEMON, name);
-    return response.sprites.front_default;
-  }
->>>>>>> dev
-=======
-  // getImage = async (name) => {
-  //   const response = await access.getApi(`${routes.POKEMON}${name}`, {});
-  //   return response.sprites.front_default;
-  // }
-
-  // setImage = async (element) => {
-  //   element.querySelector('img').src = await this.getImage(element.querySelector('.pokemon-name').innerText);
-  // }
-
-  // loadImages = (list) => {
-  //   list.forEach((pokemon) => {
-  //     this.setImage(pokemon);
-  //   });
-  // }
->>>>>>> parent of a742699 (Revert "Get and set likes from api")
 }
