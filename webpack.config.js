@@ -4,23 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          format: {
-            comments: false,
-          },
-        },
-        extractComments: false,
-      }),
-    ],
+  entry: './src/scripts/index.js',
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   mode: 'development',
-  entry: {
-    index: './src/scripts/index.js',
-  },
   devtool: 'eval-source-map',
   devServer: {
     contentBase: './dist',
@@ -30,11 +20,6 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
-  output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
   module: {
     rules: [
       {
@@ -58,6 +43,23 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
+    ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
     ],
   },
 };
