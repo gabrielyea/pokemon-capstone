@@ -5,12 +5,14 @@
 html {
   font-size: 62.5%;
   font-family: $main-font;
+  
 }
 
 body {
   @include flexCenter;
 
   font-size: 1.6rem;
+  color: $main-dark;
 }
 
 ul {
@@ -18,5 +20,5 @@ ul {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }

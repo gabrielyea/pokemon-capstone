@@ -11,7 +11,7 @@ nav {
   .logo-container {
     img {
       width: 40vw;
-      max-width: 12rem;
+      max-width: 11rem;
       height: auto;
     }
   }
@@ -25,6 +25,7 @@ nav {
 
     &__icon {
       font-size: 2.5rem;
+      color: $main-primary;
     }
   }
 }
