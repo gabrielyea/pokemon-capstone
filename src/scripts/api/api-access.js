@@ -20,8 +20,11 @@ class ApiAccess {
     return response.json();
   };
 
-  postApi = async (url, params) => {
+  postApi = async (url, params, callback) => {
     const response = await this.requestApi(url, params, 'POST');
+    if (callback !== undefined && response.ok) {
+      callback();
+    }
     return response;
   };
 }

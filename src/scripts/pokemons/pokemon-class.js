@@ -11,6 +11,8 @@ export default class Pokemon {
 
   onLike = new Actions();
 
+  onLikeComplete = new Actions();
+
   onOpenComments = new Actions();
 
   setLike = (num) => {
@@ -20,5 +22,10 @@ export default class Pokemon {
   setImage = (img) => {
     this.reference.querySelector('img').src = img;
     this.img = img;
+  }
+
+  addLikes = (num = 1) => {
+    this.likes += num;
+    this.reference.querySelector('.like-text').innerText = this.likes;
   }
 }

@@ -1,7 +1,7 @@
 class Decorator {
   makeLike = (elementList) => {
     elementList.forEach((element) => {
-      const heart = element.reference.querySelector('.like');
+      const heart = element.reference.querySelector('.like-btn');
       heart.addEventListener('click', () => {
         element.onLike.doActions({});
       });

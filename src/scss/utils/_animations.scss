@@ -95,6 +95,10 @@
   }
 }
 
+@mixin spriteSheetPosition($xPos, $yPos) {
+  background-position: $xPos $yPos;
+}
+
 @mixin spriteSheetElement($xPos, $yPos) {
   background-position: $xPos $yPos;
 }

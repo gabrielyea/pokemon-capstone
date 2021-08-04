@@ -4,12 +4,16 @@ import routes from './api-routes.js';
 class ApiMicroverse {
   setLike = (id) => {
     access.postApi(routes.LIKES, { item_id: id });
-    this.getLikes(id);
   }
 
   getLikes = async (id) => {
-    const list = await access.getApi(routes.LIKES, {});
-    return list.find((element) => element.item_id === id).likes;
+    try {
+      const list = await access.getApi(routes.LIKES, {});
+      const found = list.find((element) => element.item_id === id).likes;
+      return found;
+    } catch (error) {
+      return 0;
+    }
   };
 }
 
