@@ -3,6 +3,7 @@ import access from '../api/api-access.js';
 import pokemonList from '../pokemons/pokemon-list.js';
 import decorator from './decorator.js';
 import display from '../interface/display.js';
+import homePage from '../interface/home-page.js';
 
 export default class SetUp {
   template = document.querySelector('template');
@@ -16,7 +17,7 @@ export default class SetUp {
     this.appendPokemons(list, this.pokemonContainer);
 
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
-    pokemonList.fill(domList);
+    pokemonList.fill(domList, homePage.start);
     decorator.makeLike(pokemonList.pokemons);
     decorator.makeOpenComments(pokemonList.pokemons);
     display.setElementCount(this.counter, pokemonList.pokemons.length);
