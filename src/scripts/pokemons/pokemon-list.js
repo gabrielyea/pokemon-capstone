@@ -5,6 +5,8 @@ import routes from '../api/api-routes.js';
 import modal from '../interface/modal.js';
 import display from '../interface/display.js';
 
+// Pokemon list no longer works as a list, this would probably be better called:
+// pokemon controller, pokemon manager, page manager or something like that.
 class PokemonList {
   pokemons = [];
 
@@ -14,6 +16,8 @@ class PokemonList {
       const newPoke = new Pokemon(name, 0, reference);
       this.add(newPoke);
 
+      // all this should probably be on a decorator, maybe we can do something in the decorator
+      // so id adds all extra callbacks?
       newPoke.onLike.addActions(
         () => access.postApi(
           routes.LIKES,
@@ -37,6 +41,7 @@ class PokemonList {
     this.pokemons.push(pokemon);
   }
 
+  // We need to fix this... super ugly, maybe a loading class?
   setLike = async (poke) => {
     const extLikes = await apiMicroverse.getLikes(poke.name);
     poke.addLikes(extLikes);
