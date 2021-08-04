@@ -3,6 +3,7 @@ import apiMicroverse from '../api/api-microverse.js';
 import access from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import modal from '../interface/modal.js';
+import display from '../interface/display.js';
 
 class PokemonList {
   pokemons = [];
@@ -12,7 +13,21 @@ class PokemonList {
       const name = reference.querySelector('.pokemon-name').innerText;
       const newPoke = new Pokemon(name, 0, reference);
       this.add(newPoke);
-      newPoke.onLike.addActions(() => apiMicroverse.setLike(name));
+
+      newPoke.onLike.addActions(
+        () => access.postApi(
+          routes.LIKES,
+          { item_id: newPoke.name },
+          () => newPoke.onLikeComplete.doActions({}),
+        ),
+        newPoke.addLikes,
+        () => display.toggleLoadingState(reference.querySelector('.heart-icon')),
+        () => display.toggleDisable(reference.querySelector('.like-btn')),
+      );
+
+      newPoke.onLikeComplete.addActions(() => display.toggleLoadingState(reference.querySelector('.heart-icon')),
+        () => display.toggleDisable(reference.querySelector('.like-btn')));
+
       newPoke.onOpenComments.addActions(() => modal.openComments(newPoke));
     });
     this.loadData();
@@ -24,7 +39,7 @@ class PokemonList {
 
   setLike = async (poke) => {
     const extLikes = await apiMicroverse.getLikes(poke.name);
-    poke.setLike(extLikes);
+    poke.addLikes(extLikes);
   }
 
   getData = async (name) => {
