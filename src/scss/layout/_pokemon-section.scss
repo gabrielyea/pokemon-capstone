@@ -1,6 +1,10 @@
+@use '../utils/' as *;
+
 .pokemons-section {
   display: grid;
-  margin: 10rem 0;
-  grid-template-columns: 1fr 1fr 1fr;
+  padding: 15rem 2rem 5rem;
+  grid-template-columns: 1fr;
   gap: 5rem;
+  width: 100%;
+  background: $gradient-primary;
 }

@@ -11,12 +11,17 @@ body {
   @include flexCenter;
 
   font-size: 1.6rem;
+  color: $color-dark;
 }
 
 ul {
   list-style-type: none;
 }
 
+a {
+  color: inherit;
+}
+
 .d-none {
-  display: none;
+  display: none !important;
 }
