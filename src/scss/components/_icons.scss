@@ -1,0 +1,15 @@
+@use '../utils/' as *;
+
+.heart-icon {
+  @include spriteSheetPosition(0, 0);
+
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url('../assets/heart-icon.png');
+  background-repeat: no-repeat;
+
+  &.loading {
+    @include spriteSheetPosition(-32px, 0);
+  }
+}
