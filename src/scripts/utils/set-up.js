@@ -2,11 +2,14 @@ import routes from '../api/api-routes.js';
 import access from '../api/api-access.js';
 import pokemonList from '../pokemons/pokemon-list.js';
 import decorator from './decorator.js';
+import display from '../interface/display.js';
 
 export default class SetUp {
   template = document.querySelector('template');
 
   pokemonContainer = document.querySelector('.pokemons-section');
+
+  counter = document.querySelector('.pokemon-counter');
 
   init = async () => {
     const list = await this.getPokemons();
@@ -16,10 +19,11 @@ export default class SetUp {
     pokemonList.fill(domList);
     decorator.makeLike(pokemonList.pokemons);
     decorator.makeOpenComments(pokemonList.pokemons);
+    display.setElementCount(this.counter, pokemonList.pokemons.length);
   }
 
   getPokemons = async () => {
-    const response = await access.getApi(routes.POKEMON, { limit: 6, offset: 0 });
+    const response = await access.getApi(routes.POKEMON, { limit: 12, offset: 0 });
     return response.results;
   }
 
