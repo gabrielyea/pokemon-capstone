@@ -1,3 +1,8 @@
+import access from '../api/api-access.js';
+import routes from '../api/api-routes.js';
+import display from '../interface/display.js';
+import modal from '../interface/modal.js';
+
 class Decorator {
   makeLike = (elementList) => {
     elementList.forEach((element) => {
@@ -15,6 +20,26 @@ class Decorator {
         element.onOpenComments.doActions({});
       });
     });
+  }
+
+  setActions = (element) => {
+    const ref = element.reference;
+
+    element.onLike.addActions(
+      () => access.postApi(
+        routes.LIKES,
+        { item_id: element.name },
+        () => element.onLikeComplete.doActions({}),
+      ),
+      element.addLikes,
+      () => display.toggleLoadingState(ref.querySelector('.heart-icon')),
+      () => display.toggleDisable(ref.querySelector('.like-btn')),
+    );
+
+    element.onLikeComplete.addActions(() => display.toggleLoadingState(ref.querySelector('.heart-icon')),
+      () => display.toggleDisable(ref.querySelector('.like-btn')));
+
+    element.onOpenComments.addActions(() => modal.openComments(element));
   }
 }
 
