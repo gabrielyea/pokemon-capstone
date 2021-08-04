@@ -15,9 +15,15 @@ class ApiAccess {
     return fetch(url, options);
   };
 
-  getApi = async (url, params) => {
+  getApi = async (url, params, callback) => {
     const response = await this.requestApi(url, params, 'GET');
-    return response.json();
+    if (response.ok) {
+      if (callback !== undefined) {
+        callback();
+      }
+      return response.json();
+    }
+    return '';
   };
 
   postApi = async (url, params, callback) => {
