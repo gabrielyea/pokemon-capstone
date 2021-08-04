@@ -8,5 +8,10 @@ $color-light: #fff;
 $color-dark: #161616;
 $color-primary: #ff473d;
 $color-primary-acent: #FF7770;
+$color-primary-acent-2x: #FFD8D6;
 $color-secondary: #40ea6b;
 $color-secondary-acent: #5AED7E;
+
+// Gradients
+
+$gradient-primary: linear-gradient($color-primary, $color-primary-acent);

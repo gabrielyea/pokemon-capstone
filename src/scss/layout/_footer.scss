@@ -1,11 +1,7 @@
 @use '../utils/' as *;
 
 footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  max-width: 94rem;
-  margin: 0 auto;
   padding: 1.5rem;
   color: white;
   background: $color-dark;

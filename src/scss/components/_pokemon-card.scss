@@ -1,15 +1,70 @@
 @use '../utils/' as *;
 
 .pokemon-card {
-  @include flexCenter(column);
+  background: $color-light;
+  padding: 6rem 2rem 3rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.3);
+  color: $color-dark;
 
-  img {
-    width: 10rem;
-    height: 10rem;
-    background-color: pink;
+  .pokemon-name {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    color: rgba($color-dark, 0.7);
   }
 
   .likes-container {
+    align-self: flex-end;
+    position: relative;
+    bottom: 3rem;
+    right: 2rem;
+    margin-bottom: 2rem;
+
     @include flexCenter(row);
+
+    .like-text {
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+
+    .like-btn {
+      margin: 0;
+      padding: 0;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .pokemon-img {
+    position: relative;
+    width: 20rem;
+    height: auto;
+    z-index: 2;
+  }
+
+  .pokemon-shadow {
+    margin: 0 auto;
+    width: 12rem;   
+    height: 3rem;
+    border-radius: 50%;
+    position: relative;
+    bottom: 4rem;
+    background: rgba($color-dark, $alpha: .1);
+    filter: blur(0.4rem);
+  }
+
+  .comments-button {
+    color: $color-light;
+    background: $color-primary;
+  }
+
+  .reservations-button {
+    color: $color-primary;
+    background: $color-primary-acent-2x;
   }
 }
