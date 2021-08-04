@@ -1,5 +1,6 @@
 import access from '../api/api-access.js';
 import routes from '../api/api-routes.js';
+import pokedex from './pokedex.js';
 
 class Modal {
   modal = document.querySelector('.modal');
@@ -7,6 +8,12 @@ class Modal {
   title = document.querySelector('.modal__title');
 
   img = document.querySelector('.modal__img');
+
+  pkmDescLi = document.querySelector('.modal__pkm-desc');
+
+  pkmType1 = document.querySelector('.pkm-types__slot-1');
+
+  pkmType2 = document.querySelector('.pkm-types__slot-2');
 
   commentsCounter = document.querySelector('.modal__comments-counter');
 
@@ -41,6 +48,7 @@ class Modal {
     this.title.innerHTML = pokemon.name;
     this.img.src = pokemon.img;
     this.displayComments();
+    this.loadInfo();
   }
 
   displayComments = async () => {
@@ -56,6 +64,18 @@ class Modal {
           <span class="comment__date">${comment.creation_date}</span>`;
         this.commentsContainer.appendChild(li);
       });
+    }
+  }
+
+  loadInfo = async () => {
+    this.pkmDescLi.textContent = '';
+    this.pkmType1.textContent = '';
+    this.pkmType2.textContent = '';
+    const pkmDesc = await pokedex.getDesc(this.pokemon.name);
+    this.pkmDescLi.textContent = pkmDesc;
+    this.pkmType1.textContent = this.pokemon.types[0].type.name;
+    if (this.pokemon.types.length >= 2) {
+      this.pkmType2.textContent = this.pokemon.types[1].type.name;
     }
   }
 }

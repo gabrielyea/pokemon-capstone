@@ -10,6 +10,8 @@ class ApiRoutes {
   LIKES = `${this.MAINAPP}likes/`;
 
   COMMENTS = `${this.MAINAPP}comments/`
+
+  POKEDEX = 'https://pokeapi.co/api/v2/pokemon-species/';
 }
 
 const routes = new ApiRoutes();
