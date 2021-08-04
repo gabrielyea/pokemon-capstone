@@ -1,8 +1,9 @@
-@use '../utils/' as *;
+@use '../utils/'as *;
 
 .pokemon-card {
+  position: relative;
   background: $color-light;
-  padding: 6rem 2rem 3rem;
+  padding: 14rem 2rem 3rem;
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
@@ -12,11 +13,35 @@
   color: $color-dark;
 
   .pokemon-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background: $color-primary-acent-2x;
+    color: $color-primary;
+    width: 100%;
+    padding-top: 6rem;
+    padding-bottom: 12rem;
+    text-align: center;
     font-size: 4.5rem;
     font-weight: 900;
     letter-spacing: -0.04em;
     margin-bottom: 2rem;
-    color: rgba($color-dark, 0.7);
+    
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 10rem;
+    //   background: $color-secondary;
+    //   z-index: 1;
+    // }
   }
 
   .likes-container {
@@ -24,7 +49,6 @@
     position: relative;
     bottom: 3rem;
     right: 2rem;
-    margin-bottom: 2rem;
 
     @include flexCenter(row);
 
@@ -49,7 +73,7 @@
 
   .pokemon-shadow {
     margin: 0 auto;
-    width: 12rem;   
+    width: 12rem;
     height: 3rem;
     border-radius: 50%;
     position: relative;
