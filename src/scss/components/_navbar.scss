@@ -1,13 +1,30 @@
+@use '../utils/' as *;
+
 nav {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 94rem;
   margin: 0 auto;
-  padding: 1rem 0;
-  border: 1px black solid;
+  padding: 2rem;
 
-  ul {
-    display: flex;
-    gap: 2rem;
+  .logo-container {
+    img {
+      width: 40vw;
+      max-width: 12rem;
+      height: auto;
+    }
+  }
+
+  .mobile-hamburguer {
+    @include flexCenter();
+    position: absolute;
+    right: 2rem;
+    top: 3rem;
+    cursor: pointer;
+
+    &__icon {
+      font-size: 2.5rem;
+    }
   }
 }
