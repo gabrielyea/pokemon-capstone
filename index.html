@@ -5,34 +5,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokemon Butcher Shop</title>
-<script defer src="index.bundle.js"></script></head>
+  <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
+<script defer src="main.545b27a570df31e034ef.js"></script></head>
 
 <body>
-  <header>
+  <header id="header">
     <nav>
-      <div class="logo-container">Logo</div>
-      <ul class="nav-links">
-        <li class="pokemon-counter">Pick your delicious pokemon</li>
-        <li>Make a poke combo!</li>
+      <div class="logo-container"><a href="#header"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></a></div>
+      <div class="mobile-hamburguer">
+        <i class="mobile-hamburguer__icon fas fa-volleyball-ball"></i>
+      </div>
+      <ul class="nav-links d-none">
+        <li class="pokemon-counter"><a href="#pokemons">Therapists</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
     </nav>
   </header>
   <main>
     <section class="home">
+      <h2>Welcome Trainers</h2>
+      <p>Taking care of our health is equally important as adventure</p>
+      <div class="home__logo"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></div>
+      <div class="home__fade"></div>
     </section>
-    <section class="pokemons-section">
+    <section id="pokemons" class="pokemons-section">
       <template>
         <div class="pokemon-card">
-          <img alt="pokemon photo">
+          <h2 class="pokemon-name">Pikachu</h2>
+          <img class="pokemon-img" alt="pokemon photo">
+          <div class="pokemon-shadow"></div>
           <div class="likes-container">
-            <h2 class="pokemon-name">blbla</h2>
+            <p class="like-text"></p>
             <button class="like-btn">
               <span class="heart-icon"></span>
             </button>
-            <p class="like-text"></p>
           </div>
-          <button class="comments-button" type="button">Comments</button>
-          <button class="reservations-button" type="button">Reservations</button>
+          <div class="buttons-container">
+            <button class="comments-button" type="button">COMMENTS</button>
+            <button class="reservations-button" type="button">RESERVATIONS</button>
+          </div>
         </div>
       </template>
     </section>
