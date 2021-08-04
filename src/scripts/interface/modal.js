@@ -8,6 +8,8 @@ class Modal {
 
   img = document.querySelector('.modal__img');
 
+  pkmDescLi = document.querySelector('.modal__pkm-desc');
+
   commentsCounter = document.querySelector('.modal__comments-counter');
 
   commentsContainer = document.querySelector('.modal__comments-container');
@@ -19,6 +21,11 @@ class Modal {
   pokemon = {};
 
   constructor() {
+    let pkmDesc = '"When several of\nthese POKéMON\ngather, their\felectricity could\nbuild and cause\nlightning storms."';
+    pkmDesc = pkmDesc.replace('\n', ' ');
+    pkmDesc = pkmDesc.replace('\f', ' ');
+    this.pkmDescLi.textContent = pkmDesc;
+
     this.close.addEventListener('click', () => {
       this.modal.classList.remove('modal--active');
     });
