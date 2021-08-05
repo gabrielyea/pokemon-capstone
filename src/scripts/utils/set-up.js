@@ -4,26 +4,25 @@ import pokemonList from '../pokemons/pokemon-list.js';
 import decorator from './decorator.js';
 import display from '../interface/display.js';
 import homePage from '../interface/home-page.js';
+import navMenu from '../interface/navigation-menu.js';
 
 export default class SetUp {
   template = document.querySelector('template');
 
   pokemonContainer = document.querySelector('.pokemons-section');
 
-  counter = document.querySelector('.pokemon-counter');
-
   init = async () => {
     const list = await this.getPokemons();
     this.appendPokemons(list, this.pokemonContainer);
 
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
-    pokemonList.fill(domList, homePage.start);
+    pokemonList.fill({ domReference: domList, dataList: list }, homePage.start);
 
     decorator.makeLike(pokemonList.pokemons);
     decorator.makeOpenComments(pokemonList.pokemons);
     decorator.addCallbackOnAnimationEnd(pokemonList.pokemons);
 
-    display.setElementCount(this.counter, pokemonList.pokemons.length);
+    display.setElementCount(navMenu.counter, pokemonList.pokemons.length);
   }
 
   getPokemons = async () => {
