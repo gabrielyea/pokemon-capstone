@@ -1,0 +1,12 @@
+@use '../utils/' as *;
+
+.pokemon-shadow {
+  margin: 0 auto;
+  width: 12rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  position: relative;
+  bottom: 4rem;
+  background: rgba($color-dark, $alpha: .5);
+  filter: blur(1.2rem);
+}
