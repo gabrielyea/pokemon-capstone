@@ -124,6 +124,11 @@
   }
 
   @include media('>=tablet') {
+    .likes-container {
+      bottom: 3rem;
+      right: 5rem;
+    }
+
     .img-container {
       width: 25rem;
       height: 25rem;
