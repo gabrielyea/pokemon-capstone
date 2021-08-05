@@ -36,15 +36,15 @@ nav {
     top: 0;
     left: 0;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100%;
     padding: 20rem 4rem 4rem;
     background: linear-gradient($color-primary, $color-primary-acent);
     text-align: right;
     font-size: 3rem;
     font-weight: 700;
-    transform-origin: top;
+    transform-origin: right;
     color: $color-light;
-    margin-top: 6rem;
+    // margin-top: 6rem;
 
     & li {
       width: fit-content;
@@ -76,10 +76,10 @@ nav {
     }
 
     &.show {
-      animation: dropDowm 0.5s ease-in;
+      animation: menuOpen 0.25s ease-in-out;
     }
 
-    @include scaleDown(dropDowm);
+    @include menuMobile(menuOpen);
   }
 
   @include media('>=tablet') {
