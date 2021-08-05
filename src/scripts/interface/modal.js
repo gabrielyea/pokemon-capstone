@@ -1,6 +1,7 @@
 import access from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import pokedex from './pokedex.js';
+import display from './display.js';
 import { capital } from '../utils/utils.js';
 
 class Modal {
@@ -57,7 +58,7 @@ class Modal {
     this.commentsCounter.textContent = '(0)';
     const comments = await this.getComments();
 
-    this.commentsCounter.textContent = `(${comments.length})`;
+    display.setElementCount(this.commentsCounter, comments.length);
     if (comments.length > 0) {
       comments.forEach((comment) => {
         const li = document.createElement('li');
