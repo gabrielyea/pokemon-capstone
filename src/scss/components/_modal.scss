@@ -1,16 +1,16 @@
 @use '../utils/'as *;
 
 .modal {
-  position: absolute;
+  z-index: 11;
+  position: fixed;
   top: 0;
   left: 0;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
   background: rgba($color-dark, 0.5);
-  padding: 7rem 2rem;
-  z-index: 1;
   visibility: hidden;
   opacity: 0;
+  overflow-y: scroll;
 
   &--active {
     visibility: visible;
@@ -18,14 +18,50 @@
   }
 
   &__card {
-    background: $color-light;
+    position: relative;
     padding: 5rem 2rem;
-    border-radius: 0.5rem;
+    background: $gradient-primary;
+    color: $color-light;
 
     @include flexCenter;
   }
 
+  & hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__title {
+    color: rgba($color-light, 0.7);
+    padding-top: 6rem;
+    text-align: center;
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  &__pkm-types {
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+  }
+
   & img {
-    min-width: 20rem;
+    min-width: 35rem;
+    max-width: 100vw;
+  }
+
+  &__close {
+    z-index: 11;
+    padding: 0 1rem;
+    position: absolute;
+    right: 2rem;
+    top: 3rem;
+    font-size: 2.5rem;
+    color: $color-light;
+    background: transparent;
   }
 }

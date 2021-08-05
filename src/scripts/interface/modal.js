@@ -83,9 +83,9 @@ class Modal {
     this.pkmType2.textContent = '';
     const pkmDesc = await pokedex.getDesc(this.pokemon.name);
     this.pkmDescLi.textContent = pkmDesc;
-    this.pkmType1.textContent = this.pokemon.types[0].type.name;
+    this.pkmType1.textContent = capital(this.pokemon.types[0].type.name);
     if (this.pokemon.types.length >= 2) {
-      this.pkmType2.textContent = this.pokemon.types[1].type.name;
+      this.pkmType2.textContent = capital(this.pokemon.types[1].type.name);
     }
   }
 }

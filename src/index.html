@@ -51,15 +51,17 @@
     <section class="modals">
       <div class="modal">
         <div class="modal__card">
+          <hgroup>
+            <h2 class="modal__title">Pokemon Name</h2>
+            <div class="modal__pkm-types">
+              <span class="pkm-types__slot-1"></span>
+              <span class="pkm-types__slot-2"></span>
+            </div>
+          </hgroup>
           <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon Picture">
-          <h2 class="modal__title">Pokemon Name</h2>
           <div class="modal__info">
             <ul>
               <li class="modal__pkm-desc">Pokedex Description</li>
-              <li class="modal__pkm-types">
-                <span class="pkm-types__slot-1"></span>
-                <span class="pkm-types__slot-2"></span>
-              </li>
             </ul>
           </div>
           <h3>Comments <span class="modal__comments-counter">(0)</span></h3>
@@ -85,7 +87,7 @@
               </li>
             </ul>
           </form>
-          <button type="button" class="modal__close">X</button>
+          <button type="button" class="modal__close"><i class="fas fa-times"></i></button>
         </div>
       </div>
     </section>
