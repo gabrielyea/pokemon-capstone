@@ -65,11 +65,69 @@
     }
   }
 
+  .overlay {
+    position: absolute;
+    bottom: 15rem;
+    background-image: none;
+    width: 19.2rem;
+    height: 19.2rem;
+    z-index: 4;
+
+    &.loading {
+      background-image: url('../assets/loading-img-placeholder.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      image-rendering: crisp-edges;
+      animation: blurOut forwards 2s;
+    }
+  }
+
+  .img-container {
+    width: 19.2rem;
+    height: 19.2rem;
+  }
+
   .pokemon-img {
     position: relative;
-    width: 20rem;
-    height: auto;
+    width: 19.2rem;
+    height: 19.2rem;
+    filter: opacity(0);
+    $rendering: '-webkit-crisp-edges';
+
+    image-rendering: -moz-crisp-edges;
+    image-rendering: $rendering;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
     z-index: 2;
+
+    &.loaded {
+      background-image: none;
+      animation: blurIn forwards 2s;
+    }
+
+    @keyframes blurOut {
+      0% {
+        filter: blur(0);
+        filter: opacity(1);
+      }
+
+      100% {
+        filter: blur(10px);
+        filter: opacity(0);
+      }
+    }
+
+    @keyframes blurIn {
+      0% {
+        filter: blur(10px);
+        filter: opacity(0);
+      }
+
+      100% {
+        filter: blur(0);
+        filter: opacity(1);
+      }
+    }
   }
 
   .pokemon-shadow {
@@ -79,7 +137,7 @@
     border-radius: 50%;
     position: relative;
     bottom: 4rem;
-    background: rgba($color-dark, $alpha: .1);
+    background: rgba($color-dark, $alpha: 0.1);
     filter: blur(0.4rem);
   }
 
