@@ -23,32 +23,43 @@ class MobileMenu {
   navLinks = this.menuContainer.getElementsByTagName('a');
 
   constructor() {
+    this.setCurrentPage(this.portalLink);
+
     this.mobileMenuBtn.addEventListener('click', () => {
       display.toggleClass(this.menuContainer, 'd-none', 'show');
     });
 
-    this.pokemonsLink.addEventListener('click', () => {
+    this.pokemonsLink.addEventListener('click', (e) => {
       this.setCurrentPage(this.pokemonsLink);
-      display.toggleClass(this.menuContainer, 'd-none', 'show');
-      display.toggleClass(this.portal, 'd-none');
-      display.toggleClass(this.pokemonPage, 'd-none');
+      this.goToSection(this.currentPage, e.target);
     });
 
-    this.portalLink.addEventListener('click', () => {
+    this.portalLink.addEventListener('click', (e) => {
       this.setCurrentPage(this.portalLink);
-      display.toggleClass(this.menuContainer, 'd-none', 'show');
-      display.toggleClass(this.portal, 'd-none');
-      display.toggleClass(this.pokemonPage, 'd-none');
+      this.goToSection(this.currentPage, e.target);
       this.onPokemonDisplayClose.doActions({});
     });
   }
 
   setCurrentPage = (current) => {
     Object.entries(this.navLinks).forEach((link) => {
+      display.clearClass(link[1], 'selected');
       if (current === link[1]) {
-        display.toggleClass(link[1], 'd-none');
+        display.toggleClass(link[1], 'selected');
       }
     });
+  }
+
+  goToSection = (current, target) => {
+    if (current === target) {
+      display.toggleClass(this.menuContainer, 'd-none', 'show');
+      this.currentPage = target;
+      return;
+    }
+    display.toggleClass(this.menuContainer, 'd-none', 'show');
+    display.toggleClass(this.portal, 'd-none');
+    display.toggleClass(this.pokemonPage, 'd-none');
+    this.currentPage = target;
   }
 }
 
