@@ -1,10 +1,13 @@
 import access from '../api/api-access.js';
 import routes from '../api/api-routes.js';
+import decorator from '../utils/decorator.js';
+import display from './display.js';
 
 class HomePage {
   loadedLikes = [];
 
   start = async (dataList) => {
+    this.setAnimations(dataList);
     this.loadedLikes = await this.getLikes();
     this.loadData(dataList);
   }
@@ -42,6 +45,18 @@ class HomePage {
   setPokemonData = async (pokemon) => {
     pokemon.setImage(pokemon.getImage());
     pokemon.types = pokemon.getTypes();
+  }
+
+  setAnimations = (dataList) => {
+    const options = {
+      mainQuery: '.overlay',
+      animationName: 'blurOut',
+      callback: display.toggleLoaded,
+      toggleElement: '.pokemon-img',
+    };
+    dataList.forEach((pokemon) => {
+      decorator.addCallbackOnAnimationEnd(pokemon.reference, options);
+    });
   }
 }
 

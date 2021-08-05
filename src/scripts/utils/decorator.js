@@ -27,8 +27,7 @@ class Decorator {
 
     element.onLike.addActions(
       () => access.postApi(
-        routes.LIKES,
-        { item_id: element.name },
+        routes.LIKES, { item_id: element.name },
         () => element.onLikeComplete.doActions({}),
       ),
       element.addLikes,
@@ -42,14 +41,11 @@ class Decorator {
     element.onOpenComments.addActions(() => modal.openComments(element));
   }
 
-  addCallbackOnAnimationEnd = (elementList) => {
-    elementList.forEach((element) => {
-      const ref = element.reference;
-      ref.querySelector('.overlay').addEventListener('animationend', (e) => {
-        if (e.animationName === 'blurOut') {
-          display.toggleLoaded(ref.querySelector('.pokemon-img'));
-        }
-      });
+  addCallbackOnAnimationEnd = (domElement, options) => {
+    domElement.querySelector(options.mainQuery).addEventListener('animationend', (e) => {
+      if (e.animationName === options.animationName) {
+        options.callback(domElement.querySelector(options.toggleElement));
+      }
     });
   }
 }

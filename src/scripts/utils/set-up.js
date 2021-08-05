@@ -20,8 +20,6 @@ export default class SetUp {
 
     decorator.makeLike(pokemonList.pokemons);
     decorator.makeOpenComments(pokemonList.pokemons);
-    decorator.addCallbackOnAnimationEnd(pokemonList.pokemons);
-
     display.setElementCount(navMenu.counter, pokemonList.pokemons.length);
   }
 
