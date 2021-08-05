@@ -78,7 +78,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       image-rendering: crisp-edges;
-      animation: blurOut forwards 2s;
+      animation: blurOut normal forwards 2s;
     }
   }
 
@@ -102,32 +102,10 @@
 
     &.loaded {
       background-image: none;
-      animation: blurIn forwards 2s;
+      animation: blurOut reverse forwards 2s;
     }
 
-    @keyframes blurOut {
-      0% {
-        filter: blur(0);
-        filter: opacity(1);
-      }
-
-      100% {
-        filter: blur(10px);
-        filter: opacity(0);
-      }
-    }
-
-    @keyframes blurIn {
-      0% {
-        filter: blur(10px);
-        filter: opacity(0);
-      }
-
-      100% {
-        filter: blur(0);
-        filter: opacity(1);
-      }
-    }
+    @include fade(blurOut);
   }
 
   .pokemon-shadow {

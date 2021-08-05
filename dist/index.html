@@ -6,35 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokemon Butcher Shop</title>
   <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
-<script defer src="main.a2cd83ed6d54a13cd067.js"></script></head>
+<script defer src="main.88aa21f10785946c0064.js"></script></head>
 
 <body>
   <header id="header">
     <nav>
-      <div class="logo-container"><a href="#header"><img src="e5a8188c1ea9871a5d82.png" height="100" width="100" alt="PokeHealth logo"></a></div>
-      <ul class="nav-links">
-        <li class="pokemon-counter">Pick your delicious pokemon</li>
-        <li>Make a poke combo!</li>
+      <div class="logo-container"><a href="#header"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></a></div>
+      <div class="mobile-hamburguer">
+        <i class="mobile-hamburguer__icon fas fa-volleyball-ball"></i>
+      </div>
+      <ul class="nav-links d-none">
+        <li class="pokemon-counter"><a href="#pokemons">Therapists</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <section class="home">
-      <img class="" src="src/assets/Photo.png" alt="Pokemon Picture">
+    <section class="home d-none">
+      <h2>Welcome Trainers</h2>
+      <p>Taking care of our health is equally important as adventure</p>
+      <div class="home__logo"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></div>
+      <div class="home__fade"></div>
     </section>
-    <section class="pokemons-section">
+    <section id="pokemons" class="pokemons-section">
       <template>
         <div class="pokemon-card">
-          <img alt="pokemon photo">
+          <h2 class="pokemon-name">Pikachu</h2>
+          <div class="img-container"> 
+            <img class="pokemon-img" alt="Pokemon sprite">
+          </div>
+          <div class="overlay loading"></div>
+          <div class="pokemon-shadow"></div>
           <div class="likes-container">
-            <h2 class="pokemon-name">blbla</h2>
+            <p class="like-text"></p>
             <button class="like-btn">
               <span class="heart-icon"></span>
             </button>
-            <p class="like-text"></p>
           </div>
-          <button class="comments-button" type="button">Comments</button>
-          <button class="reservations-button" type="button">Reservations</button>
+          <div class="buttons-container">
+            <button class="comments-button" type="button">COMMENTS</button>
+            <button class="reservations-button" type="button">RESERVATIONS</button>
+          </div>
         </div>
       </template>
     </section>
@@ -42,7 +54,8 @@
     <section class="modals">
       <div class="modal">
         <div class="modal__card">
-          <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon Picture">
+          <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+            alt="Pokemon Picture">
           <h2 class="modal__title">Pokemon Name</h2>
           <div class="modal__info">
             <ul>
@@ -69,7 +82,8 @@
                 <input name="user_name" id="user_name" type="text" placeholder="Write your name here:" required>
               </li>
               <li>
-                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30" rows="10" maxlength="500" required></textarea>
+                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30"
+                  rows="10" maxlength="500" required></textarea>
               </li>
               <li>
                 <button type="submit">Comment</button>
@@ -85,7 +99,8 @@
 
   </main>
   <footer>
-    <p>Created by <a href="http://" target="_blank" rel="noopener noreferrer">Gabrielyea</a> and <a href="http://" target="_blank" rel="noopener noreferrer">D4nielJ</a></p>
+    <p>Created by <a href="http://" target="_blank" rel="noopener noreferrer">Gabrielyea</a> and <a href="http://"
+        target="_blank" rel="noopener noreferrer">D4nielJ</a></p>
   </footer>
 </body>
 
