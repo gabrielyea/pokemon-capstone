@@ -2,9 +2,11 @@
 @use '../vendors/include-media'as *;
 
 nav {
-  position: relative;
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
 
@@ -71,6 +73,10 @@ nav {
 
       a {
         text-decoration: none;
+
+        &.selected {
+          color: greenyellow;
+        }
       }
     }
 

@@ -2,6 +2,7 @@ import { access } from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import decorator from '../utils/decorator.js';
 import display from './display.js';
+import mobileMenu from './navigation-menu.js';
 
 class HomePage {
   loadedLikes = [];
@@ -55,7 +56,12 @@ class HomePage {
     };
     dataList.forEach((pokemon) => {
       decorator.addCallbackOnAnimationEnd(pokemon.reference, options);
+      mobileMenu.onPokemonDisplayClose.addActions(() => this.resetAnimation(pokemon));
     });
+  }
+
+  resetAnimation = (pokemon) => {
+    pokemon.reference.querySelector('.pokemon-img').classList.remove('loaded');
   }
 }
 

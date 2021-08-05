@@ -48,8 +48,9 @@
   }
 
   & img {
-    min-width: 30rem;
-    max-width: 90vw;
+    width: 25.6rem;
+    height: 25.6rem;
+    image-rendering: crisp-edges;
   }
 
   .pokemon-shadow {
