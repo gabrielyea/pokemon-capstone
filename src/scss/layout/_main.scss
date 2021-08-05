@@ -1,4 +1,7 @@
+@use '../utils/' as *;
+
 main {
   width: 100%;
   position: relative;
+  background: $gradient-primary;
 }
