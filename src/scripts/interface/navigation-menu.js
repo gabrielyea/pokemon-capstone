@@ -77,7 +77,7 @@ class MobileMenu {
   }
 
   displayMenu = () => {
-    display.toggleClass(this.menuContainer, 'd-none', 'show');
+    display.toggleClass(this.menuContainer, 'nav-links-mobile', 'show');
     this.animatePokeball();
     this.isMenuOpen = !this.isMenuOpen;
   }

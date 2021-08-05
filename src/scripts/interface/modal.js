@@ -3,6 +3,7 @@ import routes from '../api/api-routes.js';
 import pokedex from './pokedex.js';
 import display from './display.js';
 import { capital } from '../utils/utils.js';
+import Actions from '../utils/actions.js';
 
 class Modal {
   body = document.querySelector('body');
@@ -28,6 +29,8 @@ class Modal {
   close = document.querySelector('.modal__close');
 
   pokemon = {};
+
+  onLoadingComplete = new Actions();
 
   constructor() {
     this.close.addEventListener('click', () => {

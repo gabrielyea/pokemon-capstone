@@ -28,11 +28,7 @@
 /// @example scss - Creates a single breakpoint with the label `phone`
 ///  $breakpoints: ('phone': 320px);
 ///
-$breakpoints: (
-  'phone': 320px,
-  'tablet': 768px,
-  'desktop': 1024px
-) !default;
+$breakpoints: ('phone': 320px, 'tablet': 768px, 'desktop': 1024px) !default;
 
 ///
 /// Creates a list of static expressions or media types
@@ -45,14 +41,13 @@ $breakpoints: (
 ///    'retina2x': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
 ///  );
 ///
-$media-expressions: (
-  'screen': 'screen',
-  'print': 'print',
-  'handheld': 'handheld',
-  'landscape': '(orientation: landscape)',
-  'portrait': '(orientation: portrait)',
-  'retina2x': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)',
-  'retina3x': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
+$media-expressions: ('screen': 'screen',
+'print': 'print',
+'handheld': 'handheld',
+'landscape': '(orientation: landscape)',
+'portrait': '(orientation: portrait)',
+'retina2x': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)',
+'retina3x': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
 ) !default;
 
 ///
@@ -76,12 +71,10 @@ $media-expressions: (
 ///  /* Generates: */
 ///  @media (min-width: 2.1rem) {}
 ///
-$unit-intervals: (
-  'px': 1,
-  'em': 0.01,
-  'rem': 0.1,
-  '': 0
-) !default;
+$unit-intervals: ('px': 1,
+'em': 0.01,
+'rem': 0.1,
+'': 0) !default;
 
 ///
 /// Defines whether support for media queries is available, useful for creating separate stylesheets
@@ -201,14 +194,18 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 /// @param {String} $message - Message to log
 ///
 @mixin log($message) {
-  @if im-log($message) {}
+  @if im-log($message) {
+    //
+  }
 }
 
 ///
 /// Function with no `@return` called next to `@warn` in Sass 3.3
 /// to trigger a compiling error and stop the process.
 ///
-@function noop() {}
+@function noop() {
+  //
+}
 
 ///
 /// Determines whether a list of conditions is intercepted by the static breakpoint.
@@ -221,7 +218,9 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   $no-media-breakpoint-value: map-get($breakpoints, $im-no-media-breakpoint);
 
   @if not $no-media-breakpoint-value {
-    @if im-log('`#{$im-no-media-breakpoint}` is not a valid breakpoint.') {}
+    @if im-log('`#{$im-no-media-breakpoint}` is not a valid breakpoint.') {
+      //
+    }
   }
 
   @each $condition in $conditions {
@@ -230,8 +229,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
       $prefix: get-expression-prefix($operator);
       $value: get-expression-value($condition, $operator);
 
-      @if ($prefix == 'max' and $value <= $no-media-breakpoint-value) or
-        ($prefix == 'min' and $value > $no-media-breakpoint-value) {
+      @if ($prefix=='max'and $value <=$no-media-breakpoint-value) or ($prefix=='min'and $value > $no-media-breakpoint-value) {
         @return false;
       }
     }
@@ -285,7 +283,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   $parsed-dimension: str-slice($expression, 0, $operator-index - 1);
   $dimension: 'width';
 
-  @if str-length($parsed-dimension) > 0 {
+  @if str-length($parsed-dimension)>0 {
     $dimension: $parsed-dimension;
   }
 
@@ -334,11 +332,11 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
     $_: im-log('Unknown unit `#{unit($value)}`.');
   }
 
-  @if $operator == '>' {
+  @if $operator=='>' {
     $value: $value + $interval;
   }
 
-  @else if $operator == '<' {
+  @else if $operator=='<' {
     $value: $value - $interval;
   }
 
@@ -353,6 +351,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 /// @return {String} - Valid media query
 ///
 @function parse-expression($expression) {
+
   // If it is part of $media-expressions, it has no operator
   // then there is no need to go any further, just return the value
   @if map-has-key($media-expressions, $expression) {
@@ -379,7 +378,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 /// @return {List} Sliced list
 ///
 @function slice($list, $start: 1, $end: length($list)) {
-  @if length($list) < 1 or $start > $end {
+  @if length($list) < 1 or $start>$end {
     @return ();
   }
 
@@ -406,37 +405,37 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 /// @return {Number}
 ///
 @function to-number($value) {
-  @if type-of($value) == 'number' {
+  @if type-of($value)=='number' {
     @return $value;
   }
 
-  @else if type-of($value) != 'string' {
+  @else if type-of($value) !='string' {
     $_: im-log('Value for `to-number` should be a number or a string.');
   }
 
   $first-character: str-slice($value, 1, 1);
   $result: 0;
   $digits: 0;
-  $minus: ($first-character == '-');
+  $minus: ($first-character=='-');
   $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
 
   // Remove +/- sign if present at first character
-  @if ($first-character == '+' or $first-character == '-') {
+  @if ($first-character=='+'or $first-character=='-') {
     $value: str-slice($value, 2);
   }
 
   @for $i from 1 through str-length($value) {
     $character: str-slice($value, $i, $i);
 
-    @if not (index(map-keys($numbers), $character) or $character == '.') {
+    @if not (index(map-keys($numbers), $character) or $character=='.') {
       @return to-length(if($minus, -$result, $result), str-slice($value, $i));
     }
 
-    @if $character == '.' {
+    @if $character=='.' {
       $digits: 1;
     }
 
-    @else if $digits == 0 {
+    @else if $digits==0 {
       $result: $result * 10 + map-get($numbers, $character);
     }
 
@@ -551,13 +550,13 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///  @include media('>=350px', '<tablet', 'retina3x') { }
 ///
 @mixin media($conditions...) {
-  @if ($im-media-support and length($conditions) == 0) or
-    (not $im-media-support and im-intercepts-static-breakpoint($conditions...)) {
+  @if ($im-media-support and length($conditions)==0) or (not $im-media-support and im-intercepts-static-breakpoint($conditions...)) {
     @content;
   }
 
   @else if ($im-media-support and length($conditions) > 0) {
     @media #{unquote(parse-expression(nth($conditions, 1)))} {
+
       // Recursive call
       @include media(slice($conditions, 2)...) {
         @content;

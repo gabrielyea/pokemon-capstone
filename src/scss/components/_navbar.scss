@@ -7,6 +7,7 @@ nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 96rem;
   margin: 0 auto;
   padding: 2rem;
 
@@ -36,7 +37,7 @@ nav {
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
@@ -80,6 +81,10 @@ nav {
       }
     }
 
+    &-mobile {
+      display: none;
+    }
+
     &.show {
       animation: dropDowm 0.5s ease-in;
     }
@@ -113,6 +118,10 @@ nav {
       font-weight: 700;
       transform-origin: initial;
       color: $color-light;
+
+      &.show {
+        animation: initial;
+      }
 
       & li {
         width: fit-content;
