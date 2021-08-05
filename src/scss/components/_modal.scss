@@ -38,12 +38,12 @@
     font-size: 4.5rem;
     font-weight: 900;
     letter-spacing: -0.04em;
-    margin-bottom: 0.5rem;
+    line-height: 5rem;
   }
 
   &__pkm-types {
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     letter-spacing: 0.05rem;
   }
 
@@ -57,9 +57,9 @@
   }
 
   &__info {
-    padding: 2rem;
     background: white;
-    border-radius: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
     margin-bottom: 2rem;
     color: $color-dark;
     text-align: center;
@@ -78,6 +78,84 @@
   &__pkm-desc {
     font-size: 1.5rem;
     font-weight: 300;
+  }
+
+  &__comments-title {
+    color: rgba($color-light, 0.9);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+  }
+
+  &__comments-container {
+    overflow-y: auto;
+    width: 100%;
+    max-height: 15rem;
+    background: white;
+    padding: 0;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    color: $color-dark;
+    font-size: 1.3rem;
+
+    & li {
+      padding: 1rem 2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+
+      &:nth-child(even) {
+        background: $color-primary-acent;
+        color: $color-light;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    & .comments {
+      &__name {
+        border-radius: 0.5rem;
+        font-weight: 800;
+        letter-spacing: 0.05rem;
+        margin-right: 0.5rem;
+      }
+
+      &__date {
+        text-align: right;
+        margin-left: 0.5rem;
+        flex: 0 0 8rem;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__form {
+    width: 100%;
+
+    @include flexCenter();
+
+    & ul {
+      width: 100%;
+    }
+
+    & textarea {
+      max-height: 20rem;
+    }
+
+    & input,
+    textarea {
+      font-family: $main-font;
+      border: none;
+      width: 100%;
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      color: $color-dark;
+    }
   }
 
   &__close {

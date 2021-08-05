@@ -8,7 +8,7 @@
   <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="overflow-none">
+<body>
   <header id="header">
     <nav>
       <div class="logo-container"><a href="#header"><img src="./assets/logo.png" alt="PokeHealth logo"></a></div>
@@ -66,26 +66,28 @@
               <li class="modal__pkm-desc">Pokedex Description</li>
             </ul>
           </div>
-          <h3>Comments <span class="modal__comments-counter">(0)</span></h3>
+          <h3 class="modal__comments-title">Comments <span class="modal__comments-counter">(0)</span></h3>
           <ul class="modal__comments-container">
             <li>
-              <span class="comments__name">Alex:</span>
-              <span class="comments__comment">I'd love to pet it.</span>
-              <span class="comment__date">11th March</span>
+              <div>
+                <span class="comments__name">Alex:</span>
+                <span class="comments__comment">I'd love to pet it.</span>
+              </div>
+              <span class="comments__date">11th March</span>
             </li>
           </ul>
           <form class="modal__form" action="#" method="post">
-            <h3>Add a comment</h3>
+            <h3 class="modal__comments-title">Add a comment</h3>
             <ul>
               <li>
                 <label class="d-none" for="user_name">Write your name here:</label>
                 <input name="user_name" id="user_name" type="text" placeholder="Write your name here:" required>
               </li>
               <li>
-                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30" rows="10" maxlength="500" required></textarea>
+                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30" rows="5" maxlength="500" required></textarea>
               </li>
               <li>
-                <button type="submit">Comment</button>
+                <button type="submit">COMMENT</button>
               </li>
             </ul>
           </form>
