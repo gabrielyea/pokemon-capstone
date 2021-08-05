@@ -6,6 +6,8 @@ class MobileMenu {
 
   mobileMenuBtn = document.querySelector('.mobile-hamburger');
 
+  pokeBall = document.querySelector('.pokeball-icon')
+
   menuContainer = document.querySelector('.nav-links');
 
   counter = document.querySelector('.pokemon-counter');
@@ -22,11 +24,13 @@ class MobileMenu {
 
   navLinks = this.menuContainer.getElementsByTagName('a');
 
+  isMenuOpen = false;
+
   constructor() {
     this.setCurrentPage(this.portalLink);
 
     this.mobileMenuBtn.addEventListener('click', () => {
-      display.toggleClass(this.menuContainer, 'd-none', 'show');
+      this.displayMenu();
     });
 
     this.pokemonsLink.addEventListener('click', (e) => {
@@ -52,14 +56,30 @@ class MobileMenu {
 
   goToSection = (current, target) => {
     if (current === target) {
-      display.toggleClass(this.menuContainer, 'd-none', 'show');
+      this.displayMenu();
       this.currentPage = target;
       return;
     }
-    display.toggleClass(this.menuContainer, 'd-none', 'show');
+    this.displayMenu();
     display.toggleClass(this.portal, 'd-none');
     display.toggleClass(this.pokemonPage, 'd-none');
     this.currentPage = target;
+  }
+
+  animatePokeball = () => {
+    if (this.isMenuOpen) {
+      display.clearClass(this.pokeBall, 'open');
+      display.addClass(this.pokeBall, 'close');
+      return;
+    }
+    display.clearClass(this.pokeBall, 'close');
+    display.addClass(this.pokeBall, 'open');
+  }
+
+  displayMenu = () => {
+    display.toggleClass(this.menuContainer, 'd-none', 'show');
+    this.animatePokeball();
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
 
