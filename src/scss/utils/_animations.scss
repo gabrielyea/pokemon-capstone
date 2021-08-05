@@ -55,18 +55,21 @@
   }
 }
 
-@mixin scaleDown($name) {
+@mixin menuMobile($name) {
   @keyframes #{$name} {
     0% {
-      transform: scaleY(0);
+      left: 6rem;
+      opacity: 0;
     }
 
-    80% {
-      transform: scaleY(0.8);
+    30% {
+      left: 1.5rem;
+      opacity: 0;
     }
 
     100% {
-      transform: scaleY(1);
+      left: 0;
+      opacity: 1;
     }
   }
 }
