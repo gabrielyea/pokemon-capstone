@@ -44,7 +44,6 @@ class HomePage {
 
   setPokemonData = async (pokemon) => {
     pokemon.setImage(pokemon.getImage());
-    pokemon.types = pokemon.getTypes();
   }
 
   setAnimations = (dataList) => {

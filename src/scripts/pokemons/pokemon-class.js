@@ -36,9 +36,9 @@ export default class Pokemon {
     return img;
   }
 
-  getTypes = () => {
+  getTypesUrl = () => {
     const id = this.source.url.charAt(34);
-    const types = `https://pokeapi.co/api/v2/pokemon/${id}/encounters`;
+    const types = `https://pokeapi.co/api/v2/pokemon/${id}`;
     return types;
   }
 }

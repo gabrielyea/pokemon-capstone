@@ -31,8 +31,8 @@ class Modal {
 
   constructor() {
     this.close.addEventListener('click', () => {
-    this.body.classList.remove('overflow-none');
-    this.modal.classList.remove('modal--active');
+      this.body.classList.remove('overflow-none');
+      this.modal.classList.remove('modal--active');
     });
 
     this.form.addEventListener('submit', async (e) => {
@@ -55,8 +55,9 @@ class Modal {
     this.img.src = pokemon.img;
     this.body.classList.add('overflow-none');
     const comments = await this.getComments();
+    const types = await this.getType(pokemon);
     this.displayComments(comments);
-    this.loadInfo();
+    this.loadInfo(types);
   }
 
   displayComments = async (comments) => {
@@ -85,15 +86,20 @@ class Modal {
     return [];
   }
 
-  loadInfo = async () => {
+  getType = async (pokemon) => {
+    const poke = await access.getApi(pokemon.getTypesUrl(), {});
+    return poke.types;
+  }
+
+  loadInfo = async (types) => {
     this.pkmDescLi.textContent = '';
     this.pkmType1.textContent = '';
     this.pkmType2.textContent = '';
     const pkmDesc = await pokedex.getDesc(this.pokemon.name);
     this.pkmDescLi.textContent = pkmDesc;
-    this.pkmType1.textContent = capital(this.pokemon.types[0].type.name);
-    if (this.pokemon.types.length >= 2) {
-      this.pkmType2.textContent = capital(this.pokemon.types[1].type.name);
+    this.pkmType1.textContent = capital(types[0].type.name);
+    if (types.length >= 2) {
+      this.pkmType2.textContent = capital(types[1].type.name);
     }
   }
 }
