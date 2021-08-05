@@ -15,6 +15,10 @@ class Display {
     const text = domElement.innerText;
     domElement.innerText = `${text} (${count})`;
   }
+
+  toggleLoaded = (domElement) => {
+    domElement.classList.toggle('loaded');
+  }
 }
 
 const display = new Display();
