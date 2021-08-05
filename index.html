@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokemon Butcher Shop</title>
   <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
-<script defer src="main.77218e5059974c9b6660.js"></script></head>
+<script defer src="main.9b32e6adcddd0dc31988.js"></script></head>
 
 <body>
   <header id="header">
@@ -54,43 +54,41 @@
     <section class="modals">
       <div class="modal">
         <div class="modal__card">
-          <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-            alt="Pokemon Picture">
-          <h2 class="modal__title">Pokemon Name</h2>
+          <hgroup>
+            <h2 class="modal__title">Pokemon Name</h2>
+            <div class="modal__pkm-types">
+              <span class="pkm-types__slot-1"></span>
+              <span class="pkm-types__slot-2"></span>
+            </div>
+          </hgroup>
+          <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon Picture">
+          <div class="pokemon-shadow"></div>
           <div class="modal__info">
             <ul>
+              <li class="modal__pkm-desc-title">Pokedex Entry:</li>
               <li class="modal__pkm-desc">Pokedex Description</li>
-              <li class="modal__pkm-types">
-                <span class="pkm-types__slot-1"></span>
-                <span class="pkm-types__slot-2"></span>
-              </li>
             </ul>
           </div>
-          <h3>Comments <span class="modal__comments-counter">(0)</span></h3>
+          <h3 class="modal__comments-title">Comments <span class="modal__comments-counter">(0)</span></h3>
           <ul class="modal__comments-container">
-            <li>
-              <span class="comments__name">Alex:</span>
-              <span class="comments__comment">I'd love to pet it.</span>
-              <span class="comment__date">11th March</span>
-            </li>
+            <!-- created dinamycally with JS  -->
           </ul>
           <form class="modal__form" action="#" method="post">
-            <h3>Add a comment</h3>
+            <h3 class="modal__comments-title">Add a comment</h3>
             <ul>
               <li>
                 <label class="d-none" for="user_name">Write your name here:</label>
                 <input name="user_name" id="user_name" type="text" placeholder="Write your name here:" required>
               </li>
               <li>
-                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30"
-                  rows="10" maxlength="500" required></textarea>
+                <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30" rows="5" maxlength="500" required></textarea>
               </li>
               <li>
-                <button type="submit">Comment</button>
+                <button type="submit">COMMENT</button>
               </li>
             </ul>
           </form>
-          <button type="button" class="modal__close">X</button>
+          <button type="button" class="modal__close"><i class="fas fa-times"></i></button>
         </div>
       </div>
     </section>
