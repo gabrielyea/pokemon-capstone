@@ -55,8 +55,8 @@
   }
 }
 
-@mixin growDownAnimation {
-  @keyframes growDown {
+@mixin scaleDown($name) {
+  @keyframes #{$name} {
     0% {
       transform: scaleY(0);
     }
@@ -111,6 +111,20 @@
 
     100% {
       filter: hue-rotate(360deg);
+    }
+  }
+}
+
+@mixin fade($name) {
+  @keyframes #{$name} {
+    0% {
+      filter: blur(0);
+      filter: opacity(1);
+    }
+
+    100% {
+      filter: blur(10px);
+      filter: opacity(0);
     }
   }
 }

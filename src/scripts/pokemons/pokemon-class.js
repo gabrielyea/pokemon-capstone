@@ -1,12 +1,13 @@
 import Actions from '../utils/actions.js';
 
 export default class Pokemon {
-  constructor(name, likes = 0, reference, img = '', types = []) {
+  constructor(name, likes = 0, reference, img = '', types = [], source = '') {
     this.name = name;
     this.reference = reference;
     this.likes = likes;
     this.img = img;
     this.types = types;
+    this.source = source;
   }
 
   onLike = new Actions();
@@ -27,5 +28,17 @@ export default class Pokemon {
   addLikes = (num = 1) => {
     this.likes += num;
     this.reference.querySelector('.like-text').innerText = this.likes;
+  }
+
+  getImage = () => {
+    const id = this.source.url.charAt(34);
+    const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    return img;
+  }
+
+  getTypes = () => {
+    const id = this.source.url.charAt(34);
+    const types = `https://pokeapi.co/api/v2/pokemon/${id}/encounters`;
+    return types;
   }
 }

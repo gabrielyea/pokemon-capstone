@@ -1,42 +1,62 @@
 import access from '../api/api-access.js';
 import routes from '../api/api-routes.js';
+import decorator from '../utils/decorator.js';
+import display from './display.js';
 
 class HomePage {
-  start = (data) => {
-    this.loadData(data);
+  loadedLikes = [];
+
+  start = async (dataList) => {
+    this.setAnimations(dataList);
+    this.loadedLikes = await this.getLikes();
+    this.loadData(dataList);
   }
 
-  loadData = (data) => {
-    data.forEach((pokemon) => {
+  loadData = (dataList) => {
+    dataList.forEach((pokemon) => {
       this.setPokemonData(pokemon);
       this.setLikeData(pokemon);
     });
   }
 
-  setLikeData = async (poke) => {
-    const extLikes = await this.getLikes(poke.name);
-    poke.addLikes(extLikes);
+  setLikeData = (poke) => {
+    const found = this.loadedLikes.find((pokemon) => pokemon.item_id === poke.name);
+    if (found) {
+      poke.addLikes(found.likes);
+    } else {
+      poke.addLikes(0);
+    }
   }
 
-  getLikes = async (id) => {
+  getLikes = async () => {
     try {
       const list = await access.getApi(routes.LIKES, {});
-      const found = list.find((element) => element.item_id === id).likes;
-      return found;
+      return list;
     } catch (error) {
-      return 0;
+      return [];
     }
   };
 
-  getData = async (name) => {
-    const response = await access.getApi(`${routes.POKEMON}${name}`, {});
+  getData = async (pokemon) => {
+    const response = await access.getApi(`${routes.POKEMON}${pokemon.name}`, {});
     return response;
   }
 
   setPokemonData = async (pokemon) => {
-    const data = await this.getData(pokemon.name);
-    pokemon.setImage(data.sprites.front_default);
-    pokemon.types = data.types;
+    pokemon.setImage(pokemon.getImage());
+    pokemon.types = pokemon.getTypes();
+  }
+
+  setAnimations = (dataList) => {
+    const options = {
+      mainQuery: '.overlay',
+      animationName: 'blurOut',
+      callback: display.toggleLoaded,
+      toggleElement: '.pokemon-img',
+    };
+    dataList.forEach((pokemon) => {
+      decorator.addCallbackOnAnimationEnd(pokemon.reference, options);
+    });
   }
 }
 

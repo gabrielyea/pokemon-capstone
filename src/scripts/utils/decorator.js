@@ -27,8 +27,7 @@ class Decorator {
 
     element.onLike.addActions(
       () => access.postApi(
-        routes.LIKES,
-        { item_id: element.name },
+        routes.LIKES, { item_id: element.name },
         () => element.onLikeComplete.doActions({}),
       ),
       element.addLikes,
@@ -40,6 +39,14 @@ class Decorator {
       () => display.toggleDisable(ref.querySelector('.like-btn')));
 
     element.onOpenComments.addActions(() => modal.openComments(element));
+  }
+
+  addCallbackOnAnimationEnd = (domElement, options) => {
+    domElement.querySelector(options.mainQuery).addEventListener('animationend', (e) => {
+      if (e.animationName === options.animationName) {
+        options.callback(domElement.querySelector(options.toggleElement));
+      }
+    });
   }
 }
 

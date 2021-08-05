@@ -1,9 +1,9 @@
-@use '../utils/' as *;
+@use '../utils/'as *;
 
 nav {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   max-width: 94rem;
   margin: 0 auto;
   padding: 2rem;
@@ -34,6 +34,10 @@ nav {
   }
 
   .nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -43,13 +47,11 @@ nav {
     padding: 20rem 4rem 4rem;
     background: linear-gradient($color-primary, $color-primary-acent);
     text-align: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
     font-size: 3rem;
     font-weight: 700;
+    transform-origin: top;
     color: $color-light;
+    margin-top: 6rem;
 
     & li {
       width: fit-content;
@@ -71,5 +73,11 @@ nav {
         text-decoration: none;
       }
     }
+
+    &.show {
+      animation: dropDowm 0.5s ease-in;
+    }
+
+    @include scaleDown(dropDowm);
   }
 }
