@@ -36,4 +36,4 @@ class ApiAccess {
 }
 
 const access = new ApiAccess();
-export { access as default };
+export { access, ApiAccess };

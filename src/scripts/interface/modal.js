@@ -1,10 +1,12 @@
-import access from '../api/api-access.js';
+import { access } from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import pokedex from './pokedex.js';
 import display from './display.js';
 import { capital } from '../utils/utils.js';
 
 class Modal {
+  body = document.querySelector('body');
+
   modal = document.querySelector('.modal');
 
   title = document.querySelector('.modal__title');
@@ -29,10 +31,11 @@ class Modal {
 
   constructor() {
     this.close.addEventListener('click', () => {
+      this.body.classList.remove('overflow-none');
       this.modal.classList.remove('modal--active');
     });
 
-    this.form.addEventListener('submit', (e) => {
+    this.form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const params = {
         item_id: this.pokemon.name,
@@ -40,7 +43,8 @@ class Modal {
         comment: this.form.user_message.value,
       };
       access.postApi(routes.COMMENTS, params);
-      this.displayComments();
+      const comments = await this.getComments();
+      this.displayComments(comments);
     });
   }
 
@@ -49,22 +53,26 @@ class Modal {
     this.modal.classList.add('modal--active');
     this.title.innerHTML = capital(pokemon.name);
     this.img.src = pokemon.img;
-    this.displayComments();
-    this.loadInfo();
+    this.body.classList.add('overflow-none');
+    const comments = await this.getComments();
+    const types = await this.getType(pokemon);
+    this.displayComments(comments);
+    this.loadInfo(types);
   }
 
-  displayComments = async () => {
+  displayComments = async (comments) => {
     this.commentsContainer.innerHTML = '';
     this.commentsCounter.textContent = '(0)';
-    const comments = await this.getComments();
 
     display.setElementCount(this.commentsCounter, comments.length);
     if (comments.length > 0) {
       comments.forEach((comment) => {
         const li = document.createElement('li');
-        li.innerHTML = `<span class="comments__name">${comment.username}:</span>
-            <span class="comments__comment">${comment.comment}</span>
-            <span class="comment__date">${comment.creation_date}</span>`;
+        li.innerHTML = `<div>
+              <span class="comments__name">${comment.username}:</span>
+              <span class="comments__comment">${comment.comment}</span>
+            </div>
+            <span class="comments__date">${comment.creation_date}</span>`;
         this.commentsContainer.appendChild(li);
       });
     }
@@ -78,15 +86,20 @@ class Modal {
     return [];
   }
 
-  loadInfo = async () => {
+  getType = async (pokemon) => {
+    const poke = await access.getApi(pokemon.getTypesUrl(), {});
+    return poke.types;
+  }
+
+  loadInfo = async (types) => {
     this.pkmDescLi.textContent = '';
     this.pkmType1.textContent = '';
     this.pkmType2.textContent = '';
     const pkmDesc = await pokedex.getDesc(this.pokemon.name);
     this.pkmDescLi.textContent = pkmDesc;
-    this.pkmType1.textContent = this.pokemon.types[0].type.name;
-    if (this.pokemon.types.length >= 2) {
-      this.pkmType2.textContent = this.pokemon.types[1].type.name;
+    this.pkmType1.textContent = capital(types[0].type.name);
+    if (types.length >= 2) {
+      this.pkmType2.textContent = capital(types[1].type.name);
     }
   }
 }

@@ -1,4 +1,4 @@
-import access from '../api/api-access.js';
+import { access } from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import decorator from '../utils/decorator.js';
 import display from './display.js';
@@ -45,7 +45,6 @@ class HomePage {
 
   setPokemonData = async (pokemon) => {
     pokemon.setImage(pokemon.getImage());
-    pokemon.types = pokemon.getTypes();
   }
 
   setAnimations = (dataList) => {

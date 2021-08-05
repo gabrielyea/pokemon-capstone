@@ -1,31 +1,171 @@
 @use '../utils/'as *;
 
 .modal {
-  position: absolute;
+  z-index: 11;
+  position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   background: rgba($color-dark, 0.5);
-  padding: 7rem 2rem;
-  z-index: 1;
   visibility: hidden;
   opacity: 0;
 
   &--active {
     visibility: visible;
     opacity: 1;
+    overflow-y: scroll;
   }
 
   &__card {
-    background: $color-light;
-    padding: 5rem 2rem;
-    border-radius: 0.5rem;
+    padding: 5rem 1rem;
+    background: $gradient-primary;
+    color: $color-light;
 
     @include flexCenter;
   }
 
+  & hgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__title {
+    color: rgba($color-light, 0.7);
+    padding-top: 6rem;
+    text-align: center;
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 5rem;
+  }
+
+  &__pkm-types {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+  }
+
   & img {
-    min-width: 20rem;
+    min-width: 30rem;
+    max-width: 90vw;
+  }
+
+  .pokemon-shadow {
+    width: 20rem;
+  }
+
+  &__info {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    color: $color-dark;
+    text-align: center;
+
+    & ul {
+      @include flexCenter();
+    }
+  }
+
+  &__pkm-desc-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &__pkm-desc {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+
+  &__comments-title {
+    color: rgba($color-light, 0.9);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+  }
+
+  &__comments-container {
+    overflow-y: auto;
+    width: 100%;
+    max-height: 15rem;
+    background: white;
+    padding: 0;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    color: $color-dark;
+    font-size: 1.3rem;
+
+    & li {
+      padding: 1rem 2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+
+      &:nth-child(even) {
+        background: $color-primary-acent;
+        color: $color-light;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    & .comments {
+      &__name {
+        border-radius: 0.5rem;
+        font-weight: 800;
+        letter-spacing: 0.05rem;
+        margin-right: 0.5rem;
+      }
+
+      &__date {
+        text-align: right;
+        margin-left: 0.5rem;
+        flex: 0 0 8rem;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__form {
+    width: 100%;
+
+    @include flexCenter();
+
+    & ul {
+      width: 100%;
+    }
+
+    & textarea {
+      max-height: 20rem;
+    }
+
+    & input,
+    textarea {
+      font-family: $main-font;
+      border: none;
+      width: 100%;
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      color: $color-dark;
+    }
+  }
+
+  &__close {
+    z-index: 11;
+    padding: 0 0 0 1rem;
+    position: absolute;
+    right: 2rem;
+    top: 3rem;
+    font-size: 2.5rem;
+    color: $color-light;
+    background: transparent;
   }
 }

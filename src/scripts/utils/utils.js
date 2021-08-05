@@ -10,4 +10,6 @@ const cleanString = (message) => {
   return message;
 };
 
-export { capital, cleanString };
+const countElements = (list) => list.length;
+
+export { capital, cleanString, countElements };
