@@ -18,8 +18,11 @@ export default class SetUp {
 
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
     pokemonList.fill(domList, homePage.start);
+
     decorator.makeLike(pokemonList.pokemons);
     decorator.makeOpenComments(pokemonList.pokemons);
+    decorator.addCallbackOnAnimationEnd(pokemonList.pokemons);
+
     display.setElementCount(this.counter, pokemonList.pokemons.length);
   }
 
