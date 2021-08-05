@@ -24,6 +24,18 @@ class Display {
       domElement.classList.toggle(name);
     });
   }
+
+  clearClass = (domElement, ...className) => {
+    className.forEach((name) => {
+      domElement.classList.remove(name);
+    });
+  }
+
+  addClass = (domElement, ...className) => {
+    className.forEach((name) => {
+      domElement.classList.add(name);
+    });
+  }
 }
 
 const display = new Display();

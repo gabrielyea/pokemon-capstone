@@ -1,10 +1,13 @@
 @use '../utils/' as *;
 
 footer {
+  position: fixed;
+  bottom: 0;
   width: 100%;
   padding: 1.5rem;
   color: white;
   background: $color-dark;
+  z-index: 4;
 
   @include flexCenter();
 }
