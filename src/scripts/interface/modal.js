@@ -34,7 +34,7 @@ class Modal {
     this.modal.classList.remove('modal--active');
     });
 
-    this.form.addEventListener('submit', (e) => {
+    this.form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const params = {
         item_id: this.pokemon.name,
@@ -42,7 +42,8 @@ class Modal {
         comment: this.form.user_message.value,
       };
       access.postApi(routes.COMMENTS, params);
-      this.displayComments();
+      const comments = await this.getComments();
+      this.displayComments(comments);
     });
   }
 
@@ -52,14 +53,14 @@ class Modal {
     this.title.innerHTML = capital(pokemon.name);
     this.img.src = pokemon.img;
     this.body.classList.add('overflow-none');
-    this.displayComments();
+    const comments = await this.getComments();
+    this.displayComments(comments);
     this.loadInfo();
   }
 
-  displayComments = async () => {
+  displayComments = async (comments) => {
     this.commentsContainer.innerHTML = '';
     this.commentsCounter.textContent = '(0)';
-    const comments = await this.getComments();
 
     this.commentsCounter.textContent = `(${comments.length})`;
     if (comments.length > 0) {
