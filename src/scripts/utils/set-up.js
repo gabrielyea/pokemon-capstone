@@ -1,5 +1,5 @@
 import routes from '../api/api-routes.js';
-import access from '../api/api-access.js';
+import { access } from '../api/api-access.js';
 import pokemonList from '../pokemons/pokemon-list.js';
 import decorator from './decorator.js';
 import display from '../interface/display.js';

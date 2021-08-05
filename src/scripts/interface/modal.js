@@ -1,4 +1,4 @@
-import access from '../api/api-access.js';
+import { access } from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import pokedex from './pokedex.js';
 import display from './display.js';
