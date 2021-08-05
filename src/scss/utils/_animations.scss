@@ -55,8 +55,8 @@
   }
 }
 
-@mixin growDownAnimation {
-  @keyframes growDown {
+@mixin scaleDown($name) {
+  @keyframes #{$name} {
     0% {
       transform: scaleY(0);
     }
