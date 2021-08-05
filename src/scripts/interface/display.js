@@ -12,8 +12,17 @@ class Display {
   }
 
   setElementCount = (domElement, count) => {
-    const text = domElement.innerText;
-    domElement.innerText = `${text} (${count})`;
+    domElement.innerText = `(${count})`;
+  }
+
+  toggleLoaded = (domElement) => {
+    domElement.classList.toggle('loaded');
+  }
+
+  toggleClass = (domElement, ...className) => {
+    className.forEach((name) => {
+      domElement.classList.toggle(name);
+    });
   }
 }
 

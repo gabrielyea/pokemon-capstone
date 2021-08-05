@@ -7,11 +7,11 @@ import { capital } from '../utils/utils.js';
 class PokemonList {
   pokemons = [];
 
-  fill = (referenceList, onListFilled) => {
-    referenceList.forEach((reference) => {
+  fill = ({ domReference, dataList }, onListFilled) => {
+    domReference.forEach((reference, index) => {
       const name = reference.querySelector('.pokemon-name').innerText;
       reference.querySelector('.pokemon-name').innerText = capital(name);
-      const newPoke = new Pokemon(name, 0, reference);
+      const newPoke = new Pokemon(name, 0, reference, '', '', dataList[index]);
       this.add(newPoke);
       decorator.setActions(newPoke);
     });

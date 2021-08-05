@@ -28,15 +28,14 @@ class HomePage {
     }
   };
 
-  getData = async (name) => {
-    const response = await access.getApi(`${routes.POKEMON}${name}`, {});
+  getData = async (pokemon) => {
+    const response = await access.getApi(`${routes.POKEMON}${pokemon.name}`, {});
     return response;
   }
 
   setPokemonData = async (pokemon) => {
-    const data = await this.getData(pokemon.name);
-    pokemon.setImage(data.sprites.front_default);
-    pokemon.types = data.types;
+    pokemon.setImage(pokemon.getImage());
+    pokemon.types = pokemon.getTypes();
   }
 }
 
