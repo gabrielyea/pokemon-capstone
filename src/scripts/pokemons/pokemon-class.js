@@ -41,4 +41,7 @@ export default class Pokemon {
     const types = `https://pokeapi.co/api/v2/pokemon/${id}/encounters`;
     return types;
   }
+
+  resetAnimationState = () => {
+  }
 }
