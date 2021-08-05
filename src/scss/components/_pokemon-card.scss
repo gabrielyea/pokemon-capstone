@@ -72,17 +72,6 @@
     z-index: 2;
   }
 
-  .pokemon-shadow {
-    margin: 0 auto;
-    width: 12rem;
-    height: 3rem;
-    border-radius: 50%;
-    position: relative;
-    bottom: 4rem;
-    background: rgba($color-dark, $alpha: .1);
-    filter: blur(0.4rem);
-  }
-
   .comments-button {
     color: $color-light;
     background: $color-primary;
