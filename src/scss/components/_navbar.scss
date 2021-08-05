@@ -1,10 +1,10 @@
 @use '../utils/'as *;
+@use '../vendors/include-media'as *;
 
 nav {
   position: relative;
   display: flex;
   justify-content: space-between;
-  max-width: 94rem;
   margin: 0 auto;
   padding: 2rem;
 
@@ -34,7 +34,7 @@ nav {
   }
 
   .nav-links {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
@@ -79,5 +79,55 @@ nav {
     }
 
     @include scaleDown(dropDowm);
+  }
+
+  @include media('>=tablet') {
+    max-width: 96rem;
+
+    .mobile-hamburger {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: right;
+      position: static;
+      top: initial;
+      left: initial;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+      min-height: initial;
+      min-width: initial;
+      background: transparent;
+      font-size: 1.7rem;
+      font-weight: 700;
+      transform-origin: initial;
+      color: $color-light;
+
+      & li {
+        width: fit-content;
+        margin: 0;
+        padding: 0;
+        border-bottom: 0.15em solid transparent;
+
+        &:hover,
+        &:active {
+          color: $color-secondary-acent;
+          border-bottom: 0.15em solid $color-secondary-acent;
+        }
+
+        &:first-child {
+          margin-right: 4rem;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
