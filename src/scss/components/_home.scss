@@ -1,7 +1,7 @@
-@use '../utils/' as *;
+@use '../utils/'as *;
+@use '../vendors/include-media'as *;
 
 .home {
-  // position: relative;
   background-image: url(https://lh3.googleusercontent.com/SS_C41sYhcvrod_j0UXalZ8j_igKMJLdwg5QUNxqN5aF0MfnpHqZvsNBGvuR1AgF4JFknvSZNCLxmSKws3mo0prGjPsRZh3OGHCHr90aLELkoA=rw-e365-w1536);
   background-position: center;
   background-size: cover;
@@ -43,6 +43,37 @@
 
     img {
       max-width: 25rem;
+    }
+  }
+
+  @include media('>=tablet') {
+    background-image: url(https://lh3.googleusercontent.com/FlD4SqNV1oWy2LpHzxoJGVyCbljK5wsYw_2RtOxIoZFj4NvbjWHdmJ-PmmnP59twgTCE6DQuSolIFOdwRZspobtASJUjh8hqzvS0zXriWpUJjD8=rw-e365-w1440);
+    padding-top: 20rem;
+
+    h2 {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 30ch;
+      margin-bottom: 10rem;
+    }
+
+    &__fade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      min-height: 75vh;
+      background: linear-gradient(rgb(37, 37, 37), rgba(255, 255, 255, 0));
+    }
+
+    &__logo {
+      img {
+        max-width: 30rem;
+      }
     }
   }
 }
