@@ -3,16 +3,19 @@ import routes from '../api/api-routes.js';
 import pokedex from './pokedex.js';
 import display from './display.js';
 import { capital } from '../utils/utils.js';
-import Actions from '../utils/actions.js';
 
 class Modal {
   body = document.querySelector('body');
 
   modal = document.querySelector('.modal');
 
+  card = document.querySelector('.modal__card');
+
   title = document.querySelector('.modal__title');
 
   img = document.querySelector('.modal__img');
+
+  loadingImg = document.querySelector('.psyduck-img');
 
   pkmDescLi = document.querySelector('.modal__pkm-desc');
 
@@ -30,12 +33,11 @@ class Modal {
 
   pokemon = {};
 
-  onLoadingComplete = new Actions();
-
   constructor() {
     this.close.addEventListener('click', () => {
       this.body.classList.remove('overflow-none');
       this.modal.classList.remove('modal--active');
+      this.resetAnimationStates();
     });
 
     this.form.addEventListener('submit', async (e) => {
@@ -82,7 +84,8 @@ class Modal {
   }
 
   getComments = async () => {
-    const comments = await access.getApi(routes.COMMENTS, { item_id: this.pokemon.name });
+    const comments = await access.getApi(routes.COMMENTS,
+      { item_id: this.pokemon.name });
     if (comments !== '') {
       return comments;
     }
@@ -104,6 +107,17 @@ class Modal {
     if (types.length >= 2) {
       this.pkmType2.textContent = capital(types[1].type.name);
     }
+    this.startLoadedAniamtion();
+  }
+
+  startLoadedAniamtion = () => {
+    display.addClass(this.loadingImg, 'hide');
+    display.toggleClass(this.card, 'd-none', 'loaded');
+  }
+
+  resetAnimationStates = () => {
+    display.clearClass(this.loadingImg, 'hide');
+    display.toggleClass(this.card, 'd-none', 'loaded');
   }
 }
 
