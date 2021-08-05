@@ -13,6 +13,10 @@ class MobileMenu {
     this.mobileMenuBtn.addEventListener('click', () => {
       display.toggleClass(this.menuContainer, 'd-none', 'show');
     });
+
+    this.pokemonsLink.addEventListener('click', () => {
+      display.toggleClass(this.menuContainer, 'd-none', 'show');
+    });
   }
 }
 
