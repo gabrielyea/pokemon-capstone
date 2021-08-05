@@ -6,29 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokemon Butcher Shop</title>
   <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
-<script defer src="main.c4a771de60b43abb289e.js"></script></head>
+<script defer src="main.fa8bd3bce1616892eb62.js"></script></head>
 
 <body>
   <header id="header">
     <nav>
       <div class="logo-container"><a href="#header"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></a></div>
       <div class="mobile-hamburger">
-        <i class="mobile-hamburger__icon fas fa-volleyball-ball"></i>
+        <span class="pokeball-icon"></span>
       </div>
       <ul class="nav-links d-none">
-        <li><a class="pokemon-link" href="#pokemons">Therapists</a><span class="pokemon-counter">(0)</span></li>
+        <li><a class="portal-link" href="#portal">Portal</a></li>
+        <li><a class="pokemon-link" href="#pokemons">Therapists<span class="pokemon-counter">(0)</span></a></li>
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <section class="home d-none">
+    <section class="home">
       <h2>Welcome Trainers</h2>
       <p>Taking care of our health is equally important as adventure</p>
       <div class="home__logo"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></div>
       <div class="home__fade"></div>
     </section>
-    <section id="pokemons" class="pokemons-section">
+    <section id="pokemons" class="pokemons-section d-none">
       <template>
         <div class="pokemon-card">
           <h2 class="pokemon-name">Pikachu</h2>
