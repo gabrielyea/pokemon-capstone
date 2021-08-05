@@ -34,9 +34,8 @@ class HomePage {
   }
 
   setPokemonData = async (pokemon) => {
-    const data = await this.getData(pokemon);
-    pokemon.setImage(data.sprites.front_default);
-    pokemon.types = data.types;
+    pokemon.setImage(pokemon.getImage());
+    pokemon.types = pokemon.getTypes();
   }
 }
 
