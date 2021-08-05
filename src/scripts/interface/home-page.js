@@ -1,4 +1,4 @@
-import access from '../api/api-access.js';
+import { access } from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import decorator from '../utils/decorator.js';
 import display from './display.js';

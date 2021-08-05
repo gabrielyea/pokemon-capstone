@@ -1,5 +1,5 @@
 import routes from '../api/api-routes.js';
-import access from '../api/api-access.js';
+import { access } from '../api/api-access.js';
 import { cleanString } from '../utils/utils.js';
 
 class Pokedex {
