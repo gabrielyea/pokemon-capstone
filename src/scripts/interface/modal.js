@@ -2,7 +2,7 @@ import { access } from '../api/api-access.js';
 import routes from '../api/api-routes.js';
 import pokedex from './pokedex.js';
 import display from './display.js';
-import { capital } from '../utils/utils.js';
+import { capital, countElements } from '../utils/utils.js';
 
 class Modal {
   body = document.querySelector('body');
@@ -66,7 +66,8 @@ class Modal {
     this.commentsContainer.innerHTML = '';
     this.commentsCounter.textContent = '(0)';
 
-    display.setElementCount(this.commentsCounter, comments.length);
+    const commentCount = countElements(comments);
+    display.setElementCount(this.commentsCounter, commentCount);
     if (comments.length > 0) {
       comments.forEach((comment) => {
         const li = document.createElement('li');

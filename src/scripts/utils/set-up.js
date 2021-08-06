@@ -27,7 +27,7 @@ export default class SetUp {
   }
 
   getPokemons = async () => {
-    const response = await access.getApi(routes.POKEMON, { limit: 6, offset: 0 });
+    const response = await access.getApi(routes.POKEMON, { limit: 6, offset: 3 });
     return response.results;
   }
 
