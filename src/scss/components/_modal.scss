@@ -118,6 +118,10 @@
     font-weight: 300;
   }
 
+  &__comments-big-container {
+    width: 100%;
+  }
+
   &__comments-column {
     @include flexCenter();
   }
