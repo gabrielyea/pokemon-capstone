@@ -16,13 +16,14 @@ You can see my page live here:
 # Screenshots
 ![screenshot](./src/assets/screenshot.png)
 
-## Built With
+## Built With 🔨
 - HTML
 - SCSS
 - javaScript
 - Webpack
 
-
+## Feature video 📹
+[Watch us](https://loom.com/share/4e414dff3c0e4c0a809998bfc3247065) give a little description of our web app.
 
 ## Getting Started
 To get a local copy running follow this steps!
