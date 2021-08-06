@@ -1,0 +1,79 @@
+@use '../utils/'as *;
+@use '../vendors/include-media'as *;
+
+.home {
+  background-image: url(https://lh3.googleusercontent.com/SS_C41sYhcvrod_j0UXalZ8j_igKMJLdwg5QUNxqN5aF0MfnpHqZvsNBGvuR1AgF4JFknvSZNCLxmSKws3mo0prGjPsRZh3OGHCHr90aLELkoA=rw-e365-w1536);
+  background-position: center;
+  background-size: cover;
+  min-height: 94vh;
+  width: 100%;
+  text-align: center;
+  color: $color-light;
+  padding: 12rem 3rem 5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    z-index: 2;
+    font-size: 2.7rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    z-index: 2;
+    font-size: 1.6rem;
+    font-weight: 300;
+    max-width: 25ch;
+    margin-bottom: 10rem;
+  }
+
+  &__fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 50vh;
+    background: linear-gradient(rgb(37, 37, 37), rgba(255, 255, 255, 0));
+  }
+
+  &__logo {
+    z-index: 2;
+
+    img {
+      max-width: 25rem;
+    }
+  }
+
+  @include media('>=tablet') {
+    background-image: url(https://lh3.googleusercontent.com/FlD4SqNV1oWy2LpHzxoJGVyCbljK5wsYw_2RtOxIoZFj4NvbjWHdmJ-PmmnP59twgTCE6DQuSolIFOdwRZspobtASJUjh8hqzvS0zXriWpUJjD8=rw-e365-w1440);
+    padding-top: 20rem;
+
+    h2 {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 30ch;
+      margin-bottom: 10rem;
+    }
+
+    &__fade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      min-height: 75vh;
+      background: linear-gradient(rgb(37, 37, 37), rgba(255, 255, 255, 0));
+    }
+
+    &__logo {
+      img {
+        max-width: 30rem;
+      }
+    }
+  }
+}

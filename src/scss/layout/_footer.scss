@@ -1,0 +1,12 @@
+@use '../utils/' as *;
+
+footer {
+  min-height: 6vh;
+  width: 100%;
+  padding: 1.5rem;
+  color: white;
+  background: $color-dark;
+  z-index: 4;
+
+  @include flexCenter();
+}

@@ -1,0 +1,16 @@
+@use '../utils/' as *;
+@use '../vendors/include-media'as *;
+
+.pokemons-section {
+  display: grid;
+  padding: 15rem 2rem 5rem;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+
+  @include media('>=tablet') {
+    grid-template-columns: 1fr 1fr;
+  }
+}

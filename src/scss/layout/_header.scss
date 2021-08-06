@@ -1,0 +1,14 @@
+@use '../utils' as *;
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  min-height: 8.5rem;
+  display: flex;
+  justify-content: center;
+  background: $color-primary;
+  box-shadow: rgba($color: #000, $alpha: 0.3) 0.2rem 0.2rem 0.3rem;
+}

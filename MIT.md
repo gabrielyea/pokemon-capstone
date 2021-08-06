@@ -1,4 +1,4 @@
-Copyright 2021, Gabriel Humberto Rendon Paredes
+Copyright 2021, [Gabriel Humberto Rendon Paredes](https://github.com/gabrielyea) and [Daniel Jaramillo](https://github.com/d4nielj) 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this webpage and associated documentation files, to deal in the webpage without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the webpage, and to permit persons to whom the webpage is furnished to do so, subject to the following conditions:
 

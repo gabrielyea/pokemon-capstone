@@ -1,0 +1,41 @@
+@use '../utils/' as *;
+
+.heart-icon {
+  @include spriteSheetPosition(0, 0);
+
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url('../assets/heart-icon.png');
+  background-repeat: no-repeat;
+
+  &.loading {
+    @include spriteSheetPosition(-32px, 0);
+  }
+}
+
+.pokeball-icon {
+  z-index: 2;
+  display: block;
+  position: relative;
+  left: 4.4rem;
+  bottom: 4.5rem;
+  width: 128px;
+  height: 128px;
+  background-image: url('../assets/pokeball-icon.png');
+  background-repeat: no-repeat;
+
+  @include spriteSheetPosition(-384px, 0);
+
+  &.open {
+    animation: openBall steps(5) 0.5s forwards;
+
+    @include spriteAnimation(openBall,0 ,0 ,-640px, 0);
+  }
+
+  &.close {
+    animation: closeBall steps(11) 0.5s forwards;
+
+    @include spriteAnimation(closeBall,-768px ,0 ,-2176px, 0);
+  }
+}

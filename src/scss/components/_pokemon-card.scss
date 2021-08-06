@@ -1,0 +1,147 @@
+@use '../utils/'as *;
+@use '../vendors/include-media'as *;
+
+.pokemon-card {
+  position: relative;
+  background: $color-light;
+  padding: 14rem 2rem 3rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3);
+  color: $color-dark;
+
+  .pokemon-name {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background: $color-primary-acent-2x;
+    color: $color-primary;
+    padding-top: 6rem;
+    padding-bottom: 12rem;
+    text-align: center;
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .likes-container {
+    align-self: flex-end;
+    position: relative;
+    bottom: 3rem;
+    right: 2rem;
+
+    @include flexCenter(row);
+
+    .like-text {
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+
+    .like-btn {
+      margin: 0;
+      padding: 0;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 15rem;
+    background-image: none;
+    width: 19.2rem;
+    height: 19.2rem;
+    z-index: 4;
+
+    &.loading {
+      background-image: url('../assets/loading-img-placeholder.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      image-rendering: crisp-edges;
+      animation: blurOut normal forwards 0.5s;
+    }
+  }
+
+  .img-container {
+    width: 19.2rem;
+    height: 19.2rem;
+  }
+
+  .pokemon-img {
+    position: relative;
+    width: 19.2rem;
+    height: 19.2rem;
+    filter: opacity(0);
+    $rendering: '-webkit-crisp-edges';
+
+    image-rendering: -moz-crisp-edges;
+    image-rendering: $rendering;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    z-index: 2;
+
+    &.loaded {
+      background-image: none;
+      animation: blurOut reverse forwards 0.5s;
+    }
+
+    @include fade(blurOut);
+  }
+
+  .pokemon-shadow {
+    margin: 0 auto;
+    width: 12rem;
+    height: 3rem;
+    border-radius: 50%;
+    position: relative;
+    bottom: 4rem;
+    background: rgba($color-dark, $alpha: 0.1);
+    filter: blur(0.4rem);
+  }
+
+  .buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .comments-button {
+    color: $color-light;
+    background: $color-primary;
+  }
+
+  .reservations-button {
+    color: $color-primary;
+    background: $color-primary-acent-2x;
+  }
+
+  @include media('>=tablet') {
+    .likes-container {
+      bottom: 3rem;
+      right: 5rem;
+    }
+
+    .img-container {
+      width: 25rem;
+      height: 25rem;
+    }
+
+    .pokemon-img {
+      width: 25rem;
+      height: 25rem;
+    }
+
+    .overlay {
+      width: 25rem;
+      height: 25rem;
+    }
+  }
+}

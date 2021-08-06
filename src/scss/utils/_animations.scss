@@ -55,18 +55,21 @@
   }
 }
 
-@mixin growDownAnimation {
-  @keyframes growDown {
+@mixin menuMobile($name) {
+  @keyframes #{$name} {
     0% {
-      transform: scaleY(0);
+      left: 6rem;
+      opacity: 0;
     }
 
-    80% {
-      transform: scaleY(0.8);
+    30% {
+      left: 1.5rem;
+      opacity: 0;
     }
 
     100% {
-      transform: scaleY(1);
+      left: 0;
+      opacity: 1;
     }
   }
 }
@@ -95,6 +98,10 @@
   }
 }
 
+@mixin spriteSheetPosition($xPos, $yPos) {
+  background-position: $xPos $yPos;
+}
+
 @mixin spriteSheetElement($xPos, $yPos) {
   background-position: $xPos $yPos;
 }
@@ -107,6 +114,20 @@
 
     100% {
       filter: hue-rotate(360deg);
+    }
+  }
+}
+
+@mixin fade($name) {
+  @keyframes #{$name} {
+    0% {
+      filter: blur(0);
+      filter: opacity(1);
+    }
+
+    100% {
+      filter: blur(10px);
+      filter: opacity(0);
     }
   }
 }

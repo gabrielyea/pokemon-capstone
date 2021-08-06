@@ -1,2 +1,17 @@
-$main-theme-color: #ea4f36;
-$dark-background-color: #303030;
+// Fonts
+
+$main-font: 'Open Sans', sans-serif;
+
+// Colors
+
+$color-light: #fff;
+$color-dark: #161616;
+$color-primary: #ff473d;
+$color-primary-acent: #ff7770;
+$color-primary-acent-2x: #ffd8d6;
+$color-secondary: #40ea6b;
+$color-secondary-acent: #5aed7e;
+
+// Gradients
+
+$gradient-primary: linear-gradient($color-primary, $color-primary-acent);

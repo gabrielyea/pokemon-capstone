@@ -1,18 +1,8 @@
-import _ from 'lodash';
-import printMe from './print.js';
 import '../scss/main.scss';
+import SetUp from './utils/set-up.js';
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+const setUp = new SetUp();
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  btn.innerHTML = 'Click me and check the console!';
-
-  btn.onclick = printMe;
-  element.appendChild(btn);
-  return element;
-}
-
-document.body.appendChild(component());
+window.addEventListener('load', () => {
+  setUp.init();
+});
