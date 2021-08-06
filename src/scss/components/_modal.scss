@@ -1,4 +1,5 @@
 @use '../utils/'as *;
+@use '../vendors/include-media'as *;
 
 .modal {
   z-index: 11;
@@ -7,7 +8,6 @@
   width: 100%;
   max-height: 100%;
   background: $gradient-primary;
-  // background: rgba($color-dark, 0.5);
   height: 100vh;
   visibility: hidden;
   opacity: 0;
@@ -26,6 +26,7 @@
       height: 20rem;
       position: absolute;
       top: 50%;
+      transform: translateY(-50%);
       animation: loading infinite steps(24) 2s;
 
       @include spriteAnimation(loading, 0, 0, -4800px, 0);
@@ -48,9 +49,16 @@
     @include flexCenter;
 
     padding: 5rem 1rem;
-    background: $gradient-primary;
+    background: initial;
     color: $color-light;
     justify-content: start;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   & hgroup {
@@ -108,6 +116,14 @@
   &__pkm-desc {
     font-size: 1.5rem;
     font-weight: 300;
+  }
+
+  &__comments-big-container {
+    width: 100%;
+  }
+
+  &__comments-column {
+    @include flexCenter();
   }
 
   &__comments-title {
@@ -178,6 +194,7 @@
     & input,
     textarea {
       font-family: $main-font;
+      font-size: 1.4rem;
       border: none;
       width: 100%;
       background: white;
@@ -203,5 +220,82 @@
     animation: fadeIn reverse forwards 1s;
 
     @include fade(fadeIn);
+  }
+
+  @include media('>=tablet') {
+    @include flexCenter();
+
+    background: rgba(0, 0, 0, 0.5);
+
+    &__card {
+      @include flexCenter;
+
+      padding: 5rem;
+      color: $color-light;
+      justify-content: start;
+      max-width: 96rem;
+      margin: 0 auto;
+      background: $gradient-primary;
+      border-radius: 2rem;
+    }
+
+    &__header {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      padding: 0 5rem;
+    }
+
+    &__info {
+      grid-row: 2/span 3;
+      grid-column: 8/span 4;
+      align-self: center;
+      justify-self: center;
+      margin: 0;
+    }
+
+    & hgroup {
+      grid-row: 1 / span 1;
+      grid-column: 2 / span 10;
+      align-items: center;
+      position: relative;
+      top: 5rem;
+    }
+
+    &__title {
+      padding-top: 0;
+      font-size: 7.5rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 7.5rem;
+    }
+
+    & img {
+      grid-row: 2 / span 3;
+      grid-column: 2 / span 6;
+      align-self: center;
+      justify-self: center;
+      width: 30rem;
+      height: 30rem;
+    }
+
+    &__comments {
+      &-big-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 6%;
+        padding: 0 10rem;
+      }
+
+      &-column {
+        justify-content: flex-start;
+        flex: 0 0 47%;
+      }
+    }
+
+    &__form {
+      flex: 0 0 47%;
+    }
   }
 }

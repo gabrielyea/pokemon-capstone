@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PokeH</title>
   <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
+<<<<<<< HEAD
 <script defer src="main.1d07590841ecde1affce.js"></script></head>
+=======
+<script defer src="main.878fcb0c0c2e5bf3418f.js"></script></head>
+>>>>>>> b710227e5b401e65a772ad237cd2fe7f73edc5c6
 
 <body>
   <header id="header">
@@ -55,21 +59,23 @@
     <section class="modals">
       <div class="modal">
         <div class="modal__card d-none">
-          <hgroup>
-            <h2 class="modal__title">Pokemon Name</h2>
-            <div class="modal__pkm-types">
-              <span class="pkm-types__slot-1"></span>
-              <span class="pkm-types__slot-2"></span>
+          <div class="modal__header">
+            <hgroup>
+              <h2 class="modal__title">Pokemon Name</h2>
+              <div class="modal__pkm-types">
+                <span class="pkm-types__slot-1"></span>
+                <span class="pkm-types__slot-2"></span>
+              </div>
+            </hgroup>
+            <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon Picture">
+            <div class="modal__info">
+              <ul>
+                <li class="modal__pkm-desc-title">Pokedex Entry:</li>
+                <li class="modal__pkm-desc">Pokedex Description</li>
+              </ul>
             </div>
-          </hgroup>
-          <img class="modal__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon Picture">
-          <div class="pokemon-shadow"></div>
-          <div class="modal__info">
-            <ul>
-              <li class="modal__pkm-desc-title">Pokedex Entry:</li>
-              <li class="modal__pkm-desc">Pokedex Description</li>
-            </ul>
           </div>
+<<<<<<< HEAD
           <h3 class="modal__comments-title">Comments <span class="modal__comments-counter">(0)</span></h3>
           <ul class="modal__comments-container">
             <!-- created dinamycally with JS  -->
@@ -89,6 +95,31 @@
               </li>
             </ul>
           </form>
+=======
+          <div class="modal__comments-big-container">
+            <div class="modal__comments-column">
+              <h3 class="modal__comments-title">Comments <span class="modal__comments-counter">(0)</span></h3>
+              <ul class="modal__comments-container">
+                <!-- created dinamycally with JS  -->
+              </ul>
+            </div>
+            <form class="modal__form" action="#" method="post">
+              <h3 class="modal__comments-title">Add a comment</h3>
+              <ul>
+                <li>
+                  <label for="user_name" class="d-none">Write your name here:</label>
+                  <input name="user_name" id="user_name" type="text" placeholder="Write your name here:" required>
+                </li>
+                <li>
+                  <textarea name="user_message" id="user_message" placeholder="Write your comment here:" cols="30" rows="5" maxlength="500" required></textarea>
+                </li>
+                <li>
+                  <button class="submit-btn" type="submit">COMMENT</button>
+                </li>
+              </ul>
+            </form>
+          </div>
+>>>>>>> b710227e5b401e65a772ad237cd2fe7f73edc5c6
           <button type="button" class="modal__close"><i class="fas fa-times"></i></button>
         </div>
         <div class="loading-img">
@@ -96,9 +127,7 @@
         </div>
       </div>
     </section>
-
     <section class="about"></section>
-
   </main>
   <footer>
     <p>Created by <a href="http://" target="_blank" rel="noopener noreferrer">Gabrielyea</a> and <a href="http://"
