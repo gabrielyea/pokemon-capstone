@@ -31,6 +31,8 @@ class Modal {
 
   close = document.querySelector('.modal__close');
 
+  submitBtn = document.querySelector('.submit-btn');
+
   pokemon = {};
 
   constructor() {
@@ -40,16 +42,10 @@ class Modal {
       this.resetAnimationStates();
     });
 
-    this.form.addEventListener('submit', async (e) => {
+    this.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const params = {
-        item_id: this.pokemon.name,
-        username: this.form.user_name.value,
-        comment: this.form.user_message.value,
-      };
-      access.postApi(routes.COMMENTS, params);
-      const comments = await this.getComments();
-      this.displayComments(comments);
+      display.toggleDisable(this.submitBtn);
+      this.submitComment();
     });
   }
 
@@ -65,7 +61,8 @@ class Modal {
     this.loadInfo(types);
   }
 
-  displayComments = async (comments) => {
+  displayComments = async () => {
+    const comments = await this.getComments();
     this.commentsContainer.innerHTML = '';
     this.commentsCounter.textContent = '(0)';
 
@@ -118,6 +115,21 @@ class Modal {
   resetAnimationStates = () => {
     display.clearClass(this.loadingImg, 'hide');
     display.toggleClass(this.card, 'd-none', 'loaded');
+  }
+
+  disableComments = () => {
+    display.toggleDisable(this.submitBtn);
+  }
+
+  submitComment = async () => {
+    const params = {
+      item_id: this.pokemon.name,
+      username: this.form.user_name.value,
+      comment: this.form.user_message.value,
+    };
+    await access.postApi(routes.COMMENTS, params, this.displayComments);
+    display.toggleDisable(this.submitBtn);
+    this.form.reset();
   }
 }
 

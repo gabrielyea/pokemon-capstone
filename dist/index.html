@@ -4,31 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon Butcher Shop</title>
+  <title>PokeH</title>
   <script src="https://kit.fontawesome.com/d5e3631d2a.js" crossorigin="anonymous"></script>
-<script defer src="main.c4a771de60b43abb289e.js"></script></head>
+<script defer src="main.5b3f437cf050fadef20c.js"></script></head>
 
 <body>
   <header id="header">
     <nav>
       <div class="logo-container"><a href="#header"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></a></div>
       <div class="mobile-hamburger">
-        <i class="mobile-hamburger__icon fas fa-volleyball-ball"></i>
+        <span class="pokeball-icon"></span>
       </div>
-      <ul class="nav-links d-none">
-        <li><a class="pokemon-link" href="#pokemons">Therapists</a><span class="pokemon-counter">(0)</span></li>
+      <ul class="nav-links nav-links-mobile">
+        <li><a class="portal-link" href="#portal">Home</a></li>
+        <li><a class="pokemon-link" href="#pokemons">Therapists<span class="pokemon-counter">(0)</span></a></li>
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <section class="home d-none">
+    <section class="home">
       <h2>Welcome Trainers</h2>
       <p>Taking care of our health is equally important as adventure</p>
       <div class="home__logo"><img src="e5a8188c1ea9871a5d82.png" alt="PokeHealth logo"></div>
       <div class="home__fade"></div>
     </section>
-    <section id="pokemons" class="pokemons-section">
+    <section id="pokemons" class="pokemons-section d-none">
       <template>
         <div class="pokemon-card">
           <h2 class="pokemon-name">Pikachu</h2>
@@ -53,7 +54,7 @@
 
     <section class="modals">
       <div class="modal">
-        <div class="modal__card">
+        <div class="modal__card d-none">
           <hgroup>
             <h2 class="modal__title">Pokemon Name</h2>
             <div class="modal__pkm-types">
@@ -77,7 +78,7 @@
             <h3 class="modal__comments-title">Add a comment</h3>
             <ul>
               <li>
-                <label class="d-none" for="user_name">Write your name here:</label>
+                <label for="user_name">Write your name here:</label>
                 <input name="user_name" id="user_name" type="text" placeholder="Write your name here:" required>
               </li>
               <li>
@@ -89,6 +90,9 @@
             </ul>
           </form>
           <button type="button" class="modal__close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="loading-img">
+          <span class="psyduck-img"></span>
         </div>
       </div>
     </section>
