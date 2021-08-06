@@ -221,7 +221,7 @@
   @include media('>=tablet') {
     @include flexCenter();
 
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 
     &__card {
       @include flexCenter;
@@ -264,7 +264,6 @@
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 7.5rem;
-     
     }
 
     & img {
