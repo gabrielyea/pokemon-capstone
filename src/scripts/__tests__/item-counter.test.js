@@ -7,6 +7,8 @@ jest.mock('../api/api-access.js');
 describe('Api access mock operations', () => {
   const url1 = ['item1', 'item2', 'item3'];
   const url2 = ['item1', 'item2', 'item3', 'item4'];
+  let url3;
+  const url4 = 'jsdfjaksd';
   beforeAll(() => {
     ApiAccess.mockImplementation(() => ({
       getApi(url) {
@@ -30,5 +32,17 @@ describe('Api access mock operations', () => {
     const access = new ApiAccess();
     const list = await access.getApi(url2);
     return expect(countElements(list)).toBe(4);
+  });
+
+  it('Count elements should throw error', async () => {
+    const access = new ApiAccess();
+    const list = await access.getApi(url3);
+    return expect(() => countElements(list)).toThrow('Invalid list');
+  });
+
+  it('Count elements should throw error', async () => {
+    const access = new ApiAccess();
+    const list = await access.getApi(url4);
+    return expect(() => countElements(list)).toThrow('Invalid list');
   });
 });

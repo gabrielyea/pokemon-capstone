@@ -10,6 +10,11 @@ const cleanString = (message) => {
   return message;
 };
 
-const countElements = (list) => list.length;
+const countElements = ((list) => {
+  if (list === undefined || list === null || list.length === undefined || !Array.isArray(list)) {
+    throw new Error('Invalid list');
+  }
+  return list.length;
+});
 
 export { capital, cleanString, countElements };

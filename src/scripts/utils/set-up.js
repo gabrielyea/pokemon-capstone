@@ -5,6 +5,7 @@ import decorator from './decorator.js';
 import display from '../interface/display.js';
 import homePage from '../interface/home-page.js';
 import navMenu from '../interface/navigation-menu.js';
+import { countElements } from './utils.js';
 
 export default class SetUp {
   template = document.querySelector('template');
@@ -17,10 +18,12 @@ export default class SetUp {
 
     const domList = this.pokemonContainer.querySelectorAll('.pokemon-card');
     pokemonList.fill({ domReference: domList, dataList: list }, homePage.start);
+    const pokeCount = countElements(pokemonList.pokemons);
 
     decorator.makeLike(pokemonList.pokemons);
     decorator.makeOpenComments(pokemonList.pokemons);
-    display.setElementCount(navMenu.counter, pokemonList.pokemons.length);
+
+    display.setElementCount(navMenu.counter, pokeCount);
   }
 
   getPokemons = async () => {
