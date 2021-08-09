@@ -32,8 +32,14 @@ export default class Pokemon {
 
   getImage = () => {
     const id = this.source.url.charAt(34);
-    const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`;
+    const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
     return img;
+  }
+
+  getAnimation = () => {
+    const id = this.source.url.charAt(34);
+    const anim = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`;
+    return anim;
   }
 
   getTypesUrl = () => {

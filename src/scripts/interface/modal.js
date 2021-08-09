@@ -53,7 +53,7 @@ class Modal {
     this.pokemon = pokemon;
     this.modal.classList.add('modal--active');
     this.title.innerHTML = capital(pokemon.name);
-    this.img.src = pokemon.img;
+    this.img.src = pokemon.getAnimation();
     this.body.classList.add('overflow-none');
     const comments = await this.getComments();
     const types = await this.getType(pokemon);
